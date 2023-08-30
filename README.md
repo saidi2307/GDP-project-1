@@ -1,2 +1,2 @@
-# GDP-project-1
+# GDP-project-1.
 web Application for Wholesale system
