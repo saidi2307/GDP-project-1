@@ -39,20 +39,20 @@
             padding: 10px;
             margin-bottom: 15px;
             border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: 4px;
         }
 
         button[type="submit"] {
             width: 100%;
             padding: 10px;
-            background-color: rgb(248, 18, 56);border: none;
+            background-color: rgb(99, 18, 248);border: none;
             border-radius: 4px;
-            color: rgb(226, 211, 43);
+            color: blueviolet;
             cursor: pointer;
         }
 
         button[type="submit"]:last-child {
-            background-color: rgb(222, 216, 217);
+            background-color: rgb(18, 122, 248);
 
             
         }
@@ -72,11 +72,18 @@
                 title="Password must be at least 8 characters long"><br><br>
 
             <button type="submit">Login</button>
-            <button type="submit">Sign up</button> 
-        
+            <button type="submit">Sign up</button>
         </form>
         
-            
+            <button type="submit">Login</button>
+        <label for="email"><b>Username:</b></label>
+        <input type="email" placeholder="Enter email" name="email" required><br><br>
+
+        <label for="password"><b>Password:</b></label>
+        <input type="password" placeholder="Enter Password" name="password" required><br><br>
+
+        <button type="submit">Login</button>
+        <button type="submit">Sign up</button>
     </div>
 </body>
 </html>
