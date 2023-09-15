@@ -6,84 +6,139 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
     <style>
-        body {
+               body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 0;
         }
-
-        h2 {
-            text-align: center;
-        }
-
         .container {
-            text-align: center;
+            max-width: 400px;
             margin: 0 auto;
-            width: 300px;
             padding: 20px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-
+        .form-group {
+            margin-bottom: 15px;
+        }
         label {
             display: block;
-            font-weight: bold;
             margin-bottom: 5px;
         }
 
-        input[type="Email"],
-        input[type="Password"] {
+        input[type="email"],
+        input[type="password"]  {
             width: 100%;
             padding: 10px;
-            margin-bottom: 15px;
             border: 1px solid #ccc;
-            border-radius: 4px;
+            border-radius: 5px;
         }
-
+        .error-border {
+            border: 1px solid red;
+        }
+        /* Custom button styles */
         button[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            background-color: rgb(99, 18, 248);border: none;
-            border-radius: 4px;
-            color: blueviolet;
+            background-color: #FF9900; /* Change to your desired color */
+            color: #fff;
+            border: none;
+            padding: 15px 20px; /* Adjust the padding for button size */
+            border-radius: 5px;
             cursor: pointer;
+            font-size: 16px;
         }
-
-        button[type="submit"]:last-child {
-            background-color: rgb(18, 122, 248);
-
-            
+        /* Hover effect for the button */
+        button[type="submit"]:hover {
+            background-color: #FF6600; /* Change to your desired hover color */
         }
     </style>
 </head>
 <body>
-    <h2>Login Page</h2><br><br><br>
+    <!--<h2>Login Page</h2><br><br><br>-->
     <div class="container">
+        <h2>Login</h2>
 
         <form action="login.php" method="POST">
-            <label for="email"><b>Email:</b></label>
-            <input type="email" id="email" name="email" placeholder="Enter email" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+            <label for="email"><b>Username</b></label>
+            <div class="form-group">
+            <input type="email" id="email" name="email" placeholder="Enter email" required pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$"
                 title="Please enter a valid email address"><br><br>
-
-            <label for="password"><b>Password:</b></label>
+        </div>
+                
+            <label for="password"><b>Password</b></label>
+            <div class="form-group">
             <input type="password" id="password" name="password" placeholder="Enter Password" required pattern=".{8,}"
-                title="Password must be at least 8 characters long"><br><br>
-
+                title="Password must be at least 8 characters long,capital Letter, Small Letter, Number, Special Character"><br><br>
+            </div>
+                <div class="form-group">
             <button type="submit">Login</button>
-            <button type="submit">Sign up</button>
+            <button onclick="signup.html"type="submit">Sign up</button></div>
         </form>
-        
-            <button type="submit">Login</button>
-        <label for="email"><b>Username:</b></label>
-        <input type="email" placeholder="Enter email" name="email" required><br><br>
 
-        <label for="password"><b>Password:</b></label>
-        <input type="password" placeholder="Enter Password" name="password" required><br><br>
-
-        <button type="submit">Login</button>
-        <button type="submit">Sign up</button>
+        <script>
+            const loginForm = document.getElementById('loginForm');
+            const usernameInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+    
+            loginForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                clearErrors();
+    
+                const username = usernameInput.value.trim();
+                const password = passwordInput.value.trim();
+    
+                // Perform client-side validation
+                let isValid = true;
+    
+                if (username === '') {
+                    addErrorBorder(usernameInput);
+                    isValid = false;
+                } else if (!isValidEmail(username)) {
+                    addErrorBorder(usernameInput);
+                    isValid = false;
+                }
+    
+                if (password === '') {
+                    addErrorBorder(passwordInput);
+                    isValid = false;
+                } else if (!isValidPassword(password)) {
+                    addErrorBorder(passwordInput);
+                    isValid = false;
+                }
+    
+                if (isValid) {
+                    
+                    alert('Login successful!');
+                }
+            });
+    
+            function addErrorBorder(element) {
+                element.classList.add('error-border');
+            }
+    
+            function clearErrors() {
+                usernameInput.classList.remove('error-border');
+                passwordInput.classList.remove('error-border');
+            }
+    
+            function isValidEmail(email) {
+                // Regular expression for a valid email address
+                const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+                return emailPattern.test(email);
+            }
+    
+            function isValidPassword(password) {
+                // Regular expressions for password validation
+                const capitalLetterPattern = /[A-Z]/;
+                const smallLetterPattern = /[a-z]/;
+                const specialCharacterPattern = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/;
+                const numberPattern = /[0-9]/;
+    
+                return (
+                    capitalLetterPattern.test(password) &&
+                    smallLetterPattern.test(password) &&
+                    specialCharacterPattern.test(password) &&
+                    numberPattern.test(password)
+                );
+            }
+        </script>
     </div>
 </body>
 </html>
