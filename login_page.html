@@ -23,8 +23,9 @@
             display: block;
             margin-bottom: 5px;
         }
+
         input[type="email"],
-        input[type="password"] {
+        input[type="password"]  {
             width: 100%;
             padding: 10px;
             border: 1px solid #ccc;
@@ -42,6 +43,7 @@
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
+            
         }
         /* Hover effect for the button */
         button[type="submit"]:hover {
@@ -54,7 +56,7 @@
     <div class="container">
         <h2>Login</h2>
 
-        <form action="login.php" method="POST">
+        <form action="login.php" method="POST" id="loginForm">
             <label for="email"><b>Username</b></label>
             <div class="form-group">
             <input type="email" id="email" name="email" placeholder="Enter email" required pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$"
@@ -68,7 +70,7 @@
             </div>
                 <div class="form-group">
             <button type="submit">Login</button>
-            <button onclick="signup.html"type="submit">Sign up</button></div>
+            <button onclick="window.location.href = 'signup.html'"type="submit">Sign up</button></div>
         </form>
 
         <script>
@@ -84,7 +86,7 @@
                 const password = passwordInput.value.trim();
     
                 // Perform client-side validation
-                let isValid = true;
+                const isValid = true;
     
                 if (username === '') {
                     addErrorBorder(usernameInput);
