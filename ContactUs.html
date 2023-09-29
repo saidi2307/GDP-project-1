@@ -5,8 +5,129 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Website</title>
     <style>
-        /* Your existing CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Style for social media icons */
+        .social-icons {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .social-icons li {
+            margin: 0 10px;
+        }
+
+        .social-icons a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 24px;
+        }
     </style>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Your Website</title>
+        <style>
+            /* Your existing styles remain unchanged */
+    
+            #newsletter-form {
+                margin-top: 20px;
+                text-align: center;
+            }
+    
+            #newsletter-form input[type="email"],
+            #newsletter-form button {
+                margin: 10px;
+                padding: 8px;
+                font-size: 16px;
+            }
+        </style>
+        <script>
+            // Function to handle newsletter subscription
+            function subscribeNewsletter() {
+                var emailInput = document.getElementById('newsletter-email');
+                var email = emailInput.value.trim();
+    
+                // Basic email validation
+                var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(email)) {
+                    alert('Please enter a valid email address.');
+                    return;
+                }
+    
+                // For demonstration purposes, log the email to the console
+                console.log('Subscribed email:', email);
+    
+                // You can add further logic here, like displaying a thank you message
+    
+                // Reset the form
+                emailInput.value = '';
+            }
+        </script>
+    </head>
+    <body>
+    
+        <header>
+            <h1>Your Website</h1>
+        </header>
+    
+        <section>
+            <h2>Contact Information</h2>
+    
+            <!-- Your existing contact information code -->
+    
+            <h2>Connect with Us</h2>
+            
+            <!-- Your existing social media icons code -->
+    
+            <!-- Newsletter Subscription Form -->
+            <div id="newsletter-form">
+                <h2>Subscribe to Our Newsletter</h2>
+                <form onsubmit="subscribeNewsletter(); return false;">
+                    <label for="newsletter-email">Email:</label>
+                    <input type="email" id="newsletter-email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </section>
+    
+        <footer>
+            &copy; 2023 Your Website. All rights reserved.
+        </footer>
+    
+    </body>
+    </html>
+    
 </head>
 <body>
 
@@ -26,29 +147,11 @@
         <h2>Connect with Us</h2>
         
         <ul class="social-icons">
-            <li><a href="#" target="_blank" title="Facebook"><i class="fab fa-facebook">Facebook</i></a></li>
-            <li><a href="#" target="_blank" title="Twitter"><i class="fab fa-twitter">Twitter</i></a></li>
-            <li><a href="#" target="_blank" title="Instagram"><i class="fab fa-instagram">Instagram</i></a></li>
+            <li><a href="#" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a></li>
+            <li><a href="#" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="#" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a></li>
             <!-- Add more social media icons as needed -->
         </ul>
-
-        <!-- Contact Form -->
-        <h2>Contact Us</h2>
-        <form action="process_contact.php" method="post">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="subject">Subject:</label>
-            <input type="text" id="subject" name="subject" required>
-
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
-
-            <input type="submit" value="Submit">
-        </form>
     </section>
 
     <footer>
