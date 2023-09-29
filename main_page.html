@@ -2,9 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wholesale System</title>
     <style>
+        .sign {
+            display: flex;
+            flex-direction: column;
+            padding:3px 6px;
+            border: 1px solid transparent;
+            cursor:pointer;
+            display: inline-block;
+        }
+        .right{
+            text-align: end;
+        }
+        .cart{
+            font-size:24px;
+            color:red;
+            display:inline-block;
+        }
+
         
         .container {
             max-width: 1200px;
@@ -64,9 +82,15 @@
              background-size: cover;
              background-attachment: fixed;">
 
-    <div class="sidebar">
-        <div class="hdn-head">
-            <h2 onclick="window.location.href = 'signup.html'">Hello, Sign in</h2>
+    <div class="flex right">
+        <div class="cart">
+            <i class="fa fa-shopping-cart"></i>
+        </div>
+        <div class="sign">
+            <h2 onclick="window.location.href = 'login_page.html'">Login</h2>
+        </div>
+        <div class="sign">
+            <h2 onclick="window.location.href = 'signup.html'">Sign in</h2>
         </div>
     </div>
 
