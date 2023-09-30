@@ -78,12 +78,37 @@
 
         <h2>Order History</h2>
         <p>You can access your full order history and track the status of your orders.</p>
-        <a href="#">View Order History</a>
+        <a href="#" id="viewOrderHistory">View Order History</a>
+
+        <div id="orderHistory" style="display: none;">
+          
+            <ul>
+                <li>Order #12345 - Date: 2023-09-28</li>
+                <li>Order #12346 - Date: 2023-09-27</li>
+                <li>Order #12347 - Date: 2023-09-26</li>
+                
+            </ul>
+        </div>
 
     </div>
 
     <div class="footer">
         &copy; 2023 Wholesale System. All rights reserved.
     </div>
+
+    <script>
+        
+        const viewOrderHistoryLink = document.getElementById("viewOrderHistory");
+        const orderHistoryDiv = document.getElementById("orderHistory");
+
+        viewOrderHistoryLink.addEventListener("click", function (event) {
+            event.preventDefault();
+            if (orderHistoryDiv.style.display === "none") {
+                orderHistoryDiv.style.display = "block";
+            } else {
+                orderHistoryDiv.style.display = "none";
+            }
+        });
+    </script>
 </body>
 </html>
