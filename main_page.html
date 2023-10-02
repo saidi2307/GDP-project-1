@@ -14,7 +14,7 @@
             cursor:pointer;
             display: inline-block;
         }
-        .right{
+        .flex-right{
             text-align: end;
         }
         .cart{
@@ -50,6 +50,50 @@
             color: #ffffff; /* Change this to the desired color */
             text-decoration: none;
         }
+        .flex-right .search-container {
+            display:inline-block;
+            align-items: center;
+        }
+
+        .flex-right input[type=text] {
+            padding: 6px;
+            margin-top: 8px;
+            font-size: 17px;
+            border: none;
+        }
+
+        .flex-right .search-container button {
+            padding: 6px 10px;
+            margin-top: 8px;
+            margin-right: 16px;
+            background: #efbc02;
+            font-size: 17px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .flex-right .search-container button:hover {
+        background: #ccc;
+        }
+
+        @media screen and (max-width: 600px) {
+        .search-container {
+            float: none;
+            display: inline-block;
+        }
+        .flex-right input[type=text], .search-container button {
+            float: none;
+            display: inline-block;
+            text-align: left;
+            width: 100%;
+            margin: 0;
+            padding: 14px;
+        }
+        .flex-right input[type=text] {
+            border: 1px solid #ccc;
+        }
+    }
+
 
         .product-list {
             display: flex;
@@ -108,7 +152,11 @@
              background-size: cover;
              background-attachment: fixed;">
 
-    <div class="flex right">
+    <div class="flex-right">
+        <div class="search-container">
+              <input type="text" placeholder="search for products" name="search">
+              <button type="submit"><i class="fa fa-search"></i></button>
+          </div>
         <div class="cart">
             <i class="fa fa-shopping-cart"></i>
         </div>
