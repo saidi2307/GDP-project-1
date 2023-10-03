@@ -230,5 +230,17 @@
     </div>
 
 </body>
-</body>
+<script>
+    // JavaScript to handle the submenu visibility
+    const dropdown = document.querySelector('.dropdown');
+    const submenu = document.querySelector('.dropdown-content');
+
+    dropdown.addEventListener('mouseenter', () => {
+        submenu.style.display = 'block';
+    });
+
+    dropdown.addEventListener('mouseleave', () => {
+        submenu.style.display = 'none';
+    });
+</script>
 </html>
