@@ -4,24 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order History</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #ddd;
+            transition: background-color 0.3s;
+        }
+        a {
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: #555;
+        }
+    </style>
 </head>
 <body>
-    <h1>My Orders</h1>
-    <div>
-        <h3>Product 1</h3>
-        <h4>Order date:19 March 2023</h4>
-    </div>
-    <div>
-        <h3>Product 2</h3>
-        <h4>Order date:2 February 2023</h4>
-    </div>
-    <div>
-        <h3>Product 3</h3>
-        <h4>Order date:31 January 2023</h4>
-    </div>
-    <div>
-        <h3>Product 4</h3>
-        <h4>Order date:29 January 2023</h4>
-    </div>
+    <h1>My Order History</h1>
+    <table>
+        <tr>
+            <th>Product</th>
+            <th>Order Date</th>
+        </tr>
+        <tr>
+            <td><a href="product1.html">Product 1</a></td>
+            <td>19 March 2023</td>
+        </tr>
+        <tr>
+            <td><a href="product2.html">Product 2</a></td>
+            <td>2 February 2023</td>
+        </tr>
+        <tr>
+            <td><a href="product3.html">Product 3</a></td>
+            <td>31 January 2023</td>
+        </tr>
+        <tr>
+            <td><a href="product4.html">Product 4</a></td>
+            <td>29 January 2023</td>
+        </tr>
+    </table>
 </body>
 </html>
