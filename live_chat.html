@@ -3,7 +3,93 @@
 <head>
     <title>Wholesale System Live Chat</title>
     <style>
-       
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .header {
+            background-color: #35424a;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        h1 {
+            margin: 0;
+        }
+        
+        .chat-container {
+            background-color: #fff;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+        
+        .chat-window {
+            background-color: #f7f7f7;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        
+        .chat {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .message {
+            display: flex;
+            margin: 10px 0;
+        }
+        
+        .message-content {
+            background-color: #edf0f2;
+            padding: 10px;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+        
+        .message.sent .message-content {
+            background-color: #d6e6f7;
+        }
+        
+        .profile-image img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+        
+        /* User input */
+        .user-input {
+            display: flex;
+            margin-top: 10px;
+        }
+        
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        button {
+            background-color: #35424a;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #29363b;
+        }
     </style>
 </head>
 <body>
@@ -43,7 +129,7 @@
             </div>
         </div>
         <div class="user-list">
-            
+           
         </div>
     </div>
     <div class="notifications">
@@ -62,8 +148,5 @@
     <div class="emojis-stickers">
         
     </div>
-    <script>
-       
-    </script>
 </body>
 </html>
