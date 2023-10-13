@@ -1,115 +1,84 @@
-<!-- payment.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment Page</title>
-
     <style>
-        /* Your existing styles remain unchanged */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
 
-        /* Add styles for additional payment options */
-        #paypalFields,
-        #stripeFields {
-            display: none;
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px #ccc;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .input-container {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .btn {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-    <h1>Payment Page</h1>
-
-    <form id="paymentForm">
-        <label for="paymentMethod">Select Payment Method:</label>
-        <select id="paymentMethod" onchange="togglePaymentFields()">
-            <option value="card">Credit Card</option>
-            <option value="paypal">PayPal</option>
-            <option value="stripe">Stripe</option>
-        </select>
-
-        <!-- Credit Card Fields -->
-        <div id="cardFields">
-            <label for="cardNumber">Card Number:</label>
-            <input type="text" id="cardNumber" placeholder="Enter your card number" required>
-
-            <label for="expiryDate">Expiry Date:</label>
-            <input type="text" id="expiryDate" placeholder="MM/YYYY" required>
-
-            <label for="cvv">CVV:</label>
-            <input type="text" id="cvv" placeholder="CVV" required>
-        </div>
-
-        <!-- PayPal Fields -->
-        <div id="paypalFields">
-            <!-- Add fields for PayPal, e.g., email, etc. -->
-            <label for="paypalEmail">PayPal Email:</label>
-            <input type="text" id="paypalEmail" placeholder="Enter your PayPal email" required>
-        </div>
-
-        <!-- Stripe Fields -->
-        <div id="stripeFields">
-            <!-- Add fields for Stripe, e.g., card details, etc. -->
-            <label for="stripeCardNumber">Stripe Card Number:</label>
-            <input type="text" id="stripeCardNumber" placeholder="Enter your Stripe card number" required>
-
-            <label for="stripeExpiryDate">Stripe Expiry Date:</label>
-            <input type="text" id="stripeExpiryDate" placeholder="MM/YYYY" required>
-
-            <label for="stripeCvv">Stripe CVV:</label>
-            <input type="text" id="stripeCvv" placeholder="CVV" required>
-        </div>
-
-        <button type="button" onclick="processPayment()">Submit Payment</button>
-    </form>
-
-    <script>
-        function togglePaymentFields() {
-            const paymentMethod = document.getElementById('paymentMethod').value;
-
-            // Hide all payment fields
-            document.getElementById('cardFields').style.display = 'none';
-            document.getElementById('paypalFields').style.display = 'none';
-            document.getElementById('stripeFields').style.display = 'none';
-
-            // Show the selected payment fields
-            document.getElementById(`${paymentMethod}Fields`).style.display = 'block';
-        }
-
-        function processPayment() {
-            const paymentMethod = document.getElementById('paymentMethod').value;
-
-            // Get the entered payment details based on the selected method
-            let paymentDetails;
-            if (paymentMethod === 'card') {
-                paymentDetails = {
-                    cardNumber: document.getElementById('cardNumber').value,
-                    expiryDate: document.getElementById('expiryDate').value,
-                    cvv: document.getElementById('cvv').value,
-                };
-            } else if (paymentMethod === 'paypal') {
-                paymentDetails = {
-                    email: document.getElementById('paypalEmail').value,
-                };
-            } else if (paymentMethod === 'stripe') {
-                paymentDetails = {
-                    cardNumber: document.getElementById('stripeCardNumber').value,
-                    expiryDate: document.getElementById('stripeExpiryDate').value,
-                    cvv: document.getElementById('stripeCvv').value,
-                };
-            }
-
-            if (isValidPaymentDetails(paymentDetails)) {
-                alert('Payment successful! Thank you for your purchase.');
-            } else {
-                alert('Please enter valid payment details.');
-            }
-        }
-
-        function isValidPaymentDetails(paymentDetails) {
-            // Implement your validation logic here
-            // For simplicity, always return true in this example
-            return true;
-        }
-    </script>
+    <div class="container">
+        <h1>Payment Information</h1>
+        <form action="process_payment.php" method="post">
+            <div class="input-container">
+                <label for="cardholder">Cardholder Name</label>
+                <input type="text" id="cardholder" name="cardholder" required>
+            </div>
+            <div class="input-container">
+                <label for="card-number">Card Number</label>
+                <input type="text" id="card-number" name="card-number" required>
+            </div>
+            <div class="input-container">
+                <label for="expiration">Expiration Date</label>
+                <input type="text" id="expiration" name="expiration" placeholder="MM/YY" required>
+            </div>
+            <div class="input-container">
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" name="cvv" required>
+            </div>
+            <div class="input-container">
+                <label for="amount">Payment Amount</label>
+                <input type="text" id="amount" name="amount" required>
+            </div>
+            <button type="submit" class="btn">Submit Payment</button>
+        </form>
+    </div>
 </body>
 </html>
