@@ -154,8 +154,8 @@
 
     <div class="flex-right">
         <div class="search-container">
-              <input type="text" placeholder="search for products" name="search">
-              <button type="submit"><i class="fa fa-search"></i></button>
+              <input type="text" placeholder="search for products" name="search" id="searchInput">
+              <button type="button" onclick="redirectToProduct()"><i class="fa fa-search"></i></button>
           </div>
           <a href="my_cart.html">
           <div class="cart">
@@ -240,6 +240,35 @@
 
     dropdown.addEventListener('mouseleave', () => {
         submenu.style.display = 'none';
+    });
+</script>
+<script>
+    // JavaScript to handle the search and redirection
+    function redirectToProduct() {
+        const searchInput = document.getElementById('searchInput');
+        const searchTerm = searchInput.value.toLowerCase();
+
+        // Define your products and their corresponding URLs here
+        const products = {
+            'product 1': 'product1.html',
+            'product 2': 'product2.html',
+            'product 3': 'product3.html',
+            'product 4': 'product4.html',
+        };
+
+        // Check if the search term matches any product and redirect if found
+        if (products[searchTerm]) {
+            window.location.href = products[searchTerm];
+        } else {
+            alert('Product not found. Please try a different search term.');
+        }
+    }
+
+    // Handle Enter key press
+    document.getElementById('searchInput').addEventListener('keyup', function (event) {
+        if (event.key === 'Enter') {
+            redirectToProduct();
+        }
     });
 </script>
 </html>
