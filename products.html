@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wholesale Products</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #9FE2BF;
+            background-image: url('wholesale.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #232f3e;
+            text-align: center;
+        }
+
+        .category {
+            margin-top: 30px;
+        }
+
+        .category h2 {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .product {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+            width: calc(33.33% - 20px);
+        }
+
+        button {
+            background-color: #efbc02;
+            color: #232f3e;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Wholesale Products</h1>
+
+        <div class="category">
+            <h2>Electronics</h2>
+            <div class="product-list">
+                <div class="product">
+                    <h3>Laptop</h3>
+                    <p>Description of Laptop.</p>
+                    <button onclick="addToCart('electronics_laptop')">Add to Cart</button>
+                </div>
+
+                <div class="product">
+                    <h3>Smartphone</h3>
+                    <p>Description of Smartphone.</p>
+                    <button onclick="addToCart('electronics_smartphone')">Add to Cart</button>
+                </div>
+
+                <div class="product">
+                    <h3>Headphones</h3>
+                    <p>Description of Headphones.</p>
+                    <button onclick="addToCart('electronics_headphones')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2>Clothing</h2>
+            <div class="product-list">
+                <div class="product">
+                    <h3>T-Shirt</h3>
+                    <p>Description of T-Shirt.</p>
+                    <button onclick="addToCart('clothing_tshirt')">Add to Cart</button>
+                </div>
+
+                <div class="product">
+                    <h3>Jeans</h3>
+                    <p>Description of Jeans.</p>
+                    <button onclick="addToCart('clothing_jeans')">Add to Cart</button>
+                </div>
+
+                <div class="product">
+                    <h3>Sweater</h3>
+                    <p>Description of Sweater.</p>
+                    <button onclick="addToCart('clothing_sweater')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2>Home Appliances</h2>
+            <div class="product-list">
+                <div class="product">
+                    <h3>Refrigerator</h3>
+                    <p>Description of Refrigerator.</p>
+                    <button onclick="addToCart('appliances_refrigerator')">Add to Cart</button>
+                </div>
+
+                <div class="product">
+                    <h3>Washing Machine</h3>
+                    <p>Description of Washing Machine.</p>
+                    <button onclick="addToCart('appliances_washing_machine')">Add to Cart</button>
+                </div>
+
+                <div class="product">
+                    <h3>Coffee Maker</h3>
+                    <p>Description of Coffee Maker.</p>
+                    <button onclick="addToCart('appliances_coffee_maker')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2>Books</h2>
+            <div class="product-list">
+                <div class="product">
+                    <h3>Novel</h3>
+                    <p>Description of Novel.</p>
+                    <button onclick="addToCart('books_novel')">Add to Cart</button>
+                </div>
+
+                <div class="product">
+                    <h3>Science Fiction</h3>
+                    <p>Description of Science Fiction Book.</p>
+                    <button onclick="addToCart('books_science_fiction')">Add to Cart</button>
+                </div>
+
+                <div class="product">
+                    <h3>Self-Help</h3>
+                    <p>Description of Self-Help Book.</p>
+                    <button onclick="addToCart('books_self_help')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add more categories as needed -->
+    </div>
+
+    <script>
+        function addToCart(productId) {
+            // You can implement your cart functionality here.
+            alert(`Product ${productId} added to the cart.`);
+        }
+    </script>
+</body>
+</html>
