@@ -82,7 +82,7 @@
 </head>
 <body>
     <div class="flex-right">
-        <div class="sign" onclick="window.location.href = 'index.html'">
+        <div class="sign" onclick="window.location.href = 'main_page.html'">
             <h2><i class="fa fa-arrow-left"></i> Back to Shop</h2>
         </div>
     </div>
@@ -94,14 +94,14 @@
             <h3>Product 1</h3>
             <p>Description of Product 1.</p>
             <p>Price: $10.00</p>
-            <button>Remove</button>
+            <button onclick="removeItem(this, 10)">Remove</button>
         </div>
 
         <div class="cart-item">
             <h3>Product 2</h3>
             <p>Description of Product 2.</p>
             <p>Price: $15.00</p>
-            <button>Remove</button>
+            <button onclick="removeItem(this, 15)">Remove</button>
         </div>
 
         <div class="cart-total">
@@ -112,5 +112,21 @@
     <div class="footer">
         &copy; 2023 Wholesale System. All rights reserved.
     </div>
+
+    <script>
+        function removeItem(button, price) {
+            // Find the parent div of the button (cart-item)
+            const cartItem = button.parentElement;
+            
+            // Remove the cart-item from the DOM
+            cartItem.remove();
+
+            // Update the total price by subtracting the price of the removed item
+            const totalElement = document.querySelector(".cart-total p");
+            const currentTotal = parseFloat(totalElement.innerText.split(": $")[1]);
+            const newTotal = currentTotal - price;
+            totalElement.innerText = "Total Price: $" + newTotal.toFixed(2);
+        }
+    </script>
 </body>
 </html>
