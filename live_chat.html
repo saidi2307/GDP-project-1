@@ -3,80 +3,81 @@
 <head>
     <title>Wholesale System Live Chat</title>
     <style>
-        
         body {
             font-family: Arial, sans-serif;
             background-color: #f1f1f1;
             margin: 0;
             padding: 0;
         }
-        
-        .header {
+
+        header {
             background-color: #35424a;
             color: #fff;
             padding: 10px;
             text-align: center;
         }
-        
+
         h1 {
             margin: 0;
         }
-        
+
         .chat-container {
-            background-color: #fff;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-        }
-        
-        .chat-window {
             background-color: #f7f7f7;
-            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             padding: 20px;
-            border-radius: 10px;
         }
-        
-        
+
+        .chat-window {
+            background-color: #fff;
+            border-radius: 10px;
+            width: 80%;
+            padding: 20px;
+            margin: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
         .chat {
             display: flex;
             flex-direction: column;
         }
-        
+
         .message {
             display: flex;
             margin: 10px 0;
         }
-        
+
         .message-content {
             background-color: #edf0f2;
             padding: 10px;
             border-radius: 5px;
             margin-left: 10px;
         }
-        
+
         .message.sent .message-content {
             background-color: #d6e6f7;
         }
-        
+
         .profile-image img {
             width: 40px;
             height: 40px;
             border-radius: 50%;
         }
-        
-        /* User input */
+
         .user-input {
             display: flex;
-            margin-top: 10px;
+            margin-top: 20px;
+            width: 100%;
         }
-        
+
         input[type="text"] {
             flex: 1;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-        
+
         button {
             background-color: #35424a;
             color: #fff;
@@ -86,20 +87,42 @@
             margin-left: 10px;
             cursor: pointer;
         }
-        
+
         button:hover {
             background-color: #29363b;
+        }
+
+        .user-input input[type="text"] {
+            border: 1px solid #ccc;
+        }
+
+        .end-chat button {
+            background-color: #ff5959;
+        }
+
+        .end-chat button:hover {
+            background-color: #ff4141;
+        }
+
+        .file-sharing input[type="file"], .file-sharing button {
+            background-color: #3db69e;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .file-sharing button:hover {
+            background-color: #35a38b;
         }
     </style>
 </head>
 <body>
-    <div class="header">
+    <header>
         <img src="company-logo.png" alt="Company Logo">
         <h1>Wholesale System Live Chat</h1>
-        <div class="user-profile">
-            
-        </div>
-    </div>
+        <div class="user-profile"></div>
+    </header>
     <div class="chat-container">
         <div class="chat-window">
             <div class="chat">
@@ -121,23 +144,16 @@
                         <span class="timestamp">12:08 PM</span>
                     </div>
                 </div>
-                
             </div>
             <div class="user-input">
                 <input type="text" placeholder="Type your message...">
                 <button>Send</button>
             </div>
         </div>
-        <div class="user-list">
-           
-        </div>
+        <div class="user-list"></div>
     </div>
-    <div class="notifications">
-        
-    </div>
-    <div class="sidebar">
-        
-    </div>
+    <div class="notifications"></div>
+    <div class="sidebar"></div>
     <div class="end-chat">
         <button>End Chat</button>
     </div>
@@ -145,8 +161,6 @@
         <input type="file" id="file-input">
         <button id="send-file">Send File</button>
     </div>
-    <div class="emojis-stickers">
-        
-    </div>
+    <div class="emojis-stickers"></div>
 </body>
 </html>
