@@ -188,7 +188,7 @@
       <input type="email" id="email" placeholder="Enter your email">
       <label for="address"><address></address>address</address></address></label>
       <input type ="address" id="address" placeholder="enter your address">
-      <button onclick="completeCheckout()">Complete Checkout</button>
+      <button class="checkout-button" onclick="redirectToPaymentPage()">Checkout</button>
     </div>
   </div>
 
@@ -216,8 +216,10 @@
       const checkoutForm = document.querySelector('.checkout-form');
       checkoutForm.style.display = 'block';a
     }
-
-
+    function redirectToPaymentPage() {
+      // You can change 'payment.html' to the actual URL of your payment page.
+      window.location.href = 'payments.html';
+    }
     function completeCheckout() {
       const name = document.getElementById('name').value;
       const email = document.getElementById('email').value;
