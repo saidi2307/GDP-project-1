@@ -1,181 +1,235 @@
-<form>
-  <section class="container">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
 
-      <h1>Sign Up
+        input[type="email"],
+        input[type="password"]  {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .error-border {
+            border: 1px solid red;
+        }
+        /* Custom button styles */
+        button[type="submit"] {
+            background-color: #FF9900;
+            color: #fff;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        /* Hover effect for the button */
+        button[type="submit"]:hover {
+            background-color: #FF6600;
+        }
+        /* Add your additional CSS styling here */
+        .container {
+            text-align: center;
+            padding: 16px;
+            background-color: #f2f2f2;
+            border-radius: 10px;
+            width: 300px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: rgba(30, 34, 255, 0.646);
+        }
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="checkbox"] {
+            margin-bottom: 15px;
+        }
+        a {
+            color: rgba(30, 255, 71, 0.502);
+            text-decoration: none;
+        }
+        .cancelbtn {
+            background-color: #f44336;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: left;
+            margin-right: 10px;
+        }
+        .signupbtn {
+            background-color: rgb(30, 169, 255);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+        }
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+        .clearfix button {
+            margin-top: 10px;
+        }
+        hr {
+            border: 1px solid #f1f1f1;
+            margin-bottom: 20px;
+        }
 
-        <style>
+        .alert {
+        background-color: #f2f2f2;
+        padding: 15px;
+        margin-top: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        text-align: center;
+    }
 
-          /* Style for the container holding the form */
-  .container {
-    text-align: center;      /* Center-align text */
-    padding: 16px;           /* Add padding to the container */
-    background-color: #f2f2f2; /* Set a background color */
-    border-radius: 10px;     /* Add rounded corners */
-    width: 300px;            /* Set a fixed width for the container */
-    margin: 0 auto;          /* Center the container horizontally */
-  }
-  
-  /* Style for the heading */
-  h1 {
-    color: rgba(30, 34, 255, 0.646);       /* 12345 Change text color */
-  }
-  
-  /* Style for the introductory paragraph */
-  p {
-    font-size: 18px;         /* Set font size */
-    margin-bottom: 20px;     /* Add space below the paragraph */
-  }
-  
-  /* Style for labels associated with input fields */
-  label {
-    font-weight: bold;       /* Make labels bold */
-  }
-  
-  /* Style for text and password input fields */
-  input[type="text"],
-  input[type="password"] {
-    width: 100%;             /* Take up 100% of the container width */
-    padding: 12px 20px;      /* Add padding inside the input fields */
-    margin: 8px 0;           /* Add margin around the input fields */
-    box-sizing: border-box;  /* Include padding and border in width calculation */
-    border: 2px solid #ccc;  /* Add a 2px border with light gray color */
-    border-radius: 4px;     /* Add rounded corners */
-  
-  }
-  
-  /* Style for the "Remember me" checkbox */
-  input[type="checkbox"] {
-    margin-bottom: 15px;     /* Add space below the checkbox */
-  }
-  
-  /* Style for links within the paragraph */
-  a {
-    color: rgba(30, 255, 71, 0.502);       /* Change link color to green */
-    text-decoration: none;  /* Remove underline from links */
-  }
-  
-  /* Style for the "Cancel" button */
-  .cancelbtn {
-    background-color: #f44336; /* Set background color to red */
-    color: white;             /* Text color is white */
-    padding: 10px 20px;       /* Add padding to the button */
-    border: none;             /* Remove button border */
-    border-radius: 4px;       /* Add rounded corners */
-    cursor: pointer;          /* Add pointer cursor on hover */
-    float: left;              /* Align button to the left */
-    margin-right: 10px;       /* Add margin to the right for spacing */
-  }
-  
-  /* Style for the "Sign Up" button */
-  .signupbtn {
-    background-color: rgb(30, 169, 255); /* Set background color to voilet */
-    color: white;                /* Text color is white */
-    padding: 10px 20px;          /* Add padding to the button */
-    border: none;                /* Remove button border */
-    border-radius: 4px;          /* Add rounded corners */
-    cursor: pointer;             /* Add pointer cursor on hover */
-    float: right;                /* Align button to the right */
-  }
-  
-  /* Clearfix to handle button alignment */
-  .clearfix::after {
-    content: "";                /* Clearfix content */
-    clear: both;                /* Clear both sides */
-    display: table;             /* Use table layout for clearing floats */
-  }
-  
-  /* Add spacing between buttons */
-  .clearfix button {
-    margin-top: 10px;           /* Add top margin for spacing */
-  }
-  
-  /* Style for the horizontal line */
-  hr {
-    border: 1px solid #f1f1f1;  
-    margin-bottom: 20px;        /* Add space below the horizontal line */
-  }
-   
-        </style>
-  
+    /* Style for the success alert */
+    .alert-success {
+        background-color: #4CAF50;
+        color: white;
+    }
 
-       </h1>
-      <p>Please fill in this form to create an account.</p>
-      <hr>
-  
-      <label for="email"><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" name="email" required>
-  
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
-  
-      <label for="psw-repeat"><b>Repeat Password</b></label>
-      <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
-  
-      <label>
-        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-      </label>
-  
-      <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
-  
-      <div class="clearfix">
-        <button type="button" class="cancelbtn">Cancel</button>
-        <button type="submit" class="signupbtn" onclick="window.location.href = 'successful_signup.html'">Sign Up</button>  
-
-      </div>
+    /* Style for the error alert */
+    .alert-error {
+        background-color: #f44336;
+        color: white;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sign Up</h1>
+        <p>Please fill in this form to create an account.</p>
+        <hr>
+        <label for="email"><b>Email</b></label>
+        <input type="text" id="email" placeholder="Enter Email" name="email" required>
+        <label for="psw"><b>Password</b></label>
+        <input type="password" id="password" placeholder="Enter Password" name="psw" required>
+        <label for="psw-repeat"><b>Repeat Password</b></label>
+        <input type="password" id="password-repeat" placeholder="Repeat Password" name="psw-repeat" required>
+        <label>
+            <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+        </label>
+        <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+        <div class="clearfix">
+            <button type="button" class="cancelbtn">Cancel</button>
+            <button type="button" class="signupbtn" id="signup">Sign Up</button>
+        </div>
     </div>
-  </form>
-  
-  <input type="checkbox" id="showModal" class="hidden">
-  <div id="signup-success" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <p>Sign Up Successful! Your account has been created.</p>
-    </div>
-  </div>
 
-  <!-- Add the following CSS code to style the hidden modal -->
-  <style>
-    /* Hide the modal by default */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.7);
-    }
+    <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-auth-compat.js"></script>
 
-    /* Style the modal content */
-    .modal-content {
-      background-color: white;
-      margin: 15% auto;
-      padding: 20px;
-      border: 1px solid #888;
-      width: 80%;
-      max-width: 400px;
-      text-align: center;
-    }
+    <script>
+        // Initialize Firebase with your configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBQp2gpBdXOLxr3Z32FC9b-64Ad1jH618w",
+            authDomain: "gdp-team-1.firebaseapp.com",
+            projectId: "gdp-team-1",
+            storageBucket: "gdp-team-1.appspot.com",
+            messagingSenderId: "60916149363",
+            appId: "1:60916149363:web:8790809a0bdeccd2de8e06",
+            measurementId: "G-BJXVYGMJXW"
+        };
+        firebase.initializeApp(firebaseConfig);
 
-    /* Style the close button */
-    .close {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      font-size: 20px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+        // Get elements
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const passwordRepeatInput = document.getElementById('password-repeat');
+        const signupButton = document.getElementById('signup');
 
-    /* Pseudo-selector to show the modal when checkbox is checked */
-    #showModal:checked ~ #signup-success {
-      display: block;
-    }
+        // Add event listener for the "Sign Up" button
+        signupButton.addEventListener('click', () => {
+            const email = emailInput.value;
+            const password = passwordInput.value;
+            const passwordRepeat = passwordRepeatInput.value;
 
-    /* Hide the checkbox */
-    .hidden {
-      display: none;
-    }
-  </style>
+            // Check if password and repeated password match
+            if (password !== passwordRepeat) {
+                alert("Passwords do not match.");
+                return;
+            }
+
+            // Create the user in Firebase
+            firebase.auth().createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    // Registration successful, show the success modal
+                    if (document.getElementById('showModal')) {
+                    document.getElementById('showModal').checked = true;
+                }
+                const alert = document.createElement('div');
+        alert.className = 'alert alert-success';
+        alert.innerText = 'Account created successfully!';
+
+        // Add a "Login" button
+        const loginButton = document.createElement('button');
+        loginButton.innerText = 'Login';
+        loginButton.onclick = function() {
+            // Redirect to the login page
+            window.location.href = 'login_page.html';
+        };
+
+        alert.appendChild(loginButton);
+        document.body.appendChild(alert);
+                })
+                .catch((error) => {
+                  const errorMessage = error.message;
+        alert(errorMessage);
+
+        // Display error alert
+        const alert = document.createElement('div');
+        alert.className = 'alert alert-error';
+        alert.innerText = errorMessage;
+        document.body.appendChild(alert);
+                });
+        });
+
+        // Close the success modal
+        function closeModal() {
+            document.getElementById('showModal').checked = false;
+        }
+    </script>
 </body>
 </html>
