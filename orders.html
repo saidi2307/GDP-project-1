@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,7 +24,6 @@
         .nav {
             background-color: #232f3e;
             color: white;
-            padding: 10px;
             border-radius: 8px;
         }
 
@@ -34,7 +32,7 @@
             display: flex;
             justify-content: space-around;
             margin: 0;
-            padding: 0;
+            padding: 10px 0;
         }
 
         .nav li {
@@ -49,7 +47,7 @@
 
         h1 {
             font-size: 36px;
-            margin-top: 20px;
+            margin: 20px 0;
             color: #333;
         }
 
@@ -61,7 +59,7 @@
 
         h2 {
             font-size: 24px;
-            margin-top: 20px;
+            margin: 20px 0;
             color: #333;
         }
 
@@ -89,9 +87,36 @@
             text-decoration: none;
             font-weight: bold;
         }
+
+        /* Enhanced Styles */
+        h1 {
+            color: #232f3e;
+        }
+
+        .nav a:hover {
+            color: #ff9900;
+        }
+
+        .nav li:last-child a {
+            background-color: #ff9900;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        #orderHistory {
+            display: none;
+        }
+
+        #viewOrderHistory {
+            cursor: pointer;
+            color: #ff9900;
+        }
+
+        #viewOrderHistory:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
-
 <body>
     <div class="container">
         <div class="nav">
@@ -113,13 +138,17 @@
             <li>Order #12347 - Date: 2023-09-26</li>
         </ul>
 
-        <div id="orderHistory" style="display: none;">
+        <div id="orderHistory">
             <h2>Order History</h2>
             <ul>
                 <li>Order #12345 - Date: 2023-09-28</li>
                 <li>Order #12346 - Date: 2023-09-27</li>
                 <li>Order #12347 - Date: 2023-09-26</li>
             </ul>
+        </div>
+
+        <div id="viewOrderHistory">
+            Show Order History
         </div>
     </div>
 
@@ -131,15 +160,15 @@
         const viewOrderHistoryLink = document.getElementById("viewOrderHistory");
         const orderHistoryDiv = document.getElementById("orderHistory");
 
-        viewOrderHistoryLink.addEventListener("click", function (event) {
-            event.preventDefault();
+        viewOrderHistoryLink.addEventListener("click", function () {
             if (orderHistoryDiv.style.display === "none") {
                 orderHistoryDiv.style.display = "block";
+                viewOrderHistoryLink.innerText = "Hide Order History";
             } else {
                 orderHistoryDiv.style.display = "none";
+                viewOrderHistoryLink.innerText = "Show Order History";
             }
         });
     </script>
 </body>
-
 </html>
