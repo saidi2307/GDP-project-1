@@ -118,15 +118,22 @@
                 <h2>Payment Information</h2>
                 <label for="paymentMethod">Payment Method:</label>
                 <select id="paymentMethod" name="paymentMethod" onchange="showPaymentOption()">
-                    <option value="creditCard">Credit Card</option>
+                    <option value="creditCard">Credit or Debit Card</option>
                     <option value="paypal">PayPal</option>
                 </select>
 
                 <div id="creditCardOption" class="payment-option">
-                    <label for="card">Credit Card:</label>
+                    <label for="card">Credit Card Number:</label>
                     <input type="text" id="card" name="card" required>
-                    <label for="exp">Expiration Date:</label>
+
+                    <label for="exp">Expiration Date (MM/YY):</label>
                     <input type="text" id="exp" name="exp" required>
+
+                    <label for="cvv">CVV/CVC:</label>
+                    <input type="text" id="cvv" name="cvv" required>
+
+                    <label for="cardholder">Name on Card:</label>
+                    <input type="text" id="cardholder" name="cardholder" required>
                 </div>
 
                 <div id="paypalOption" class="payment-option">
@@ -134,12 +141,34 @@
                     <input type="text" id="paypalId" name="paypalId" required>
                 </div>
 
-                <button type="button" class="checkout-button" onclick="showAlert()">Checkout</button>
+                <div id="checkoutMessage" style="color: red;"></div>
+
+                <button type="button" class="checkout-button" onclick="performCheckout()">Checkout</button>
             </form>
         </div>
     </div>
 
     <script>
+        function performCheckout() {
+            var paymentMethod = document.getElementById("paymentMethod").value;
+
+            if (paymentMethod === "creditCard") {
+                var cardNumber = document.getElementById("card").value;
+                var expirationDate = document.getElementById("exp").value;
+                var cvv = document.getElementById("cvv").value;
+                var cardholderName = document.getElementById("cardholder").value;
+
+                if (cardNumber && expirationDate && cvv && cardholderName) {
+                    alert("Thank you for your purchase! Your order has been placed.");
+                    // You can send the payment information to your server for processing.
+                } else {
+                    document.getElementById("checkoutMessage").textContent = "Please enter the card details to checkout.";
+                }
+            } else if (paymentMethod === "paypal") {
+                // Handle PayPal payment processing here.
+            }
+        }
+
         function showPaymentOption() {
             var paymentMethod = document.getElementById("paymentMethod").value;
             var paymentOptions = document.getElementsByClassName("payment-option");
@@ -149,10 +178,6 @@
             }
 
             document.getElementById(paymentMethod + "Option").classList.add("show-payment-option");
-        }
-
-        function showAlert() {
-            alert("Thank you for your purchase! Your order has been placed.");
         }
     </script>
 </body>
