@@ -4,22 +4,29 @@
   <style>
     body {
       font-family: sans-serif;
-      background-color: #fff;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
     }
 
     .container {
       max-width: 1200px;
       margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
     }
 
     .header {
-      padding: 20px 0;
       text-align: center;
+      margin-bottom: 20px;
     }
 
     .header h1 {
       font-size: 30px;
       font-weight: bold;
+      color: #3498db;
     }
 
     .main-content {
@@ -31,6 +38,9 @@
     .sidebar {
       width: 20%;
       padding: 20px;
+      background-color: #3498db;
+      color: #fff;
+      border-radius: 5px;
     }
 
     .sidebar h3 {
@@ -49,6 +59,27 @@
       cursor: pointer;
     }
 
+    /* Change background colors for categories and subcategories */
+    .electronics {
+      background-color: #3498db;
+      color: #fff;
+    }
+
+    .clothing {
+      background-color: #e74c3c;
+      color: #fff;
+    }
+
+    .books {
+      background-color: #27ae60;
+      color: #fff;
+    }
+
+    .sub-category {
+      background-color: #f39c12;
+      color: #fff;
+    }
+
     .product-list {
       width: 80%;
       padding: 20px;
@@ -58,7 +89,8 @@
 
     .product {
       width: 30%;
-      border: 1px solid #ccc;
+      background-color: #fff;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
       padding: 10px;
       margin: 10px;
       border-radius: 5px;
@@ -67,6 +99,7 @@
     .product h3 {
       font-size: 18px;
       font-weight: bold;
+      color: #3498db;
     }
 
     .product p {
@@ -90,10 +123,11 @@
       background-color: #3498db;
       color: #fff;
       border: none;
-      padding: 5px 10px;
-      margin: 5px;
-      border-radius: 3px;
+      padding: 10px 20px;
+      margin: 20px 0;
+      border-radius: 5px;
       cursor: pointer;
+      font-size: 18px;
     }
 
     .checkout-form {
@@ -101,15 +135,25 @@
       margin-top: 20px;
     }
 
-    .checkout-form label {
-      font-size: 14px;
+    .checkout-form h3 {
+      font-size: 24px;
       font-weight: bold;
+      color: #3498db;
+    }
+
+    .checkout-form label {
+      font-size: 18px;
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
     }
 
     .checkout-form input {
       width: 100%;
       padding: 8px;
       margin: 5px 0;
+      border: 1px solid #ccc;
+      border-radius: 3px;
     }
 
     .checkout-form button {
@@ -117,29 +161,49 @@
       background-color: #3498db;
       color: #fff;
       border: none;
-      padding: 5px 10px;
-      margin: 5px;
-      border-radius: 3px;
+      padding: 10px 20px;
+      margin: 20px 0;
+      border-radius: 5px;
       cursor: pointer;
+      font-size: 18px;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <header>
+    <header class="header">
       <h1>Wholesale Products</h1>
     </header>
 
     <main class="main-content">
-      <sidebar>
+      <div class="sidebar">
         <h3>Categories</h3>
-        <button onclick="filterProducts('all')">All</button>
-        <button onclick="filterProducts('electronics')">Electronics</button>
-        <button onclick="filterProducts('clothing')">Clothing</button>
-        <button onclick="filterProducts('books')">Books</button>
-      </sidebar>
+        <button class="electronics" onclick="filterProducts('electronics')">Electronics</button>
+        <button class="clothing" onclick="filterProducts('clothing')">Clothing</button>
+        <button class="books" onclick="filterProducts('books')">Books</button>
+        <!-- Add more categories -->
+        <button class="sub-category" onclick="filterProducts('subcategory1')">Subcategory 1</button>
+        <button class="sub-category" onclick="filterProducts('subcategory2')">Subcategory 2</button>
+        <button class="home-appliances" onclick="filterProducts('home-appliances')">Home Appliances</button>
+        <button class="furniture" onclick="filterProducts('furniture')">Furniture</button>
+        <button class="kitchen-appliances" onclick="filterProducts('kitchen-appliances')">Kitchen Appliances</button>
+        <button class="sports-fitness" onclick="filterProducts('sports-fitness')">Sports & Fitness</button>
+        <button class="personal-care" onclick="filterProducts('personal-care')">Beauty & Personal Care</button>
+        <button class="office-supplies" onclick="filterProducts('office-supplies')">Office Supplies</button>
+        <button class="toys-games" onclick="filterProducts('toys-games')">Toys & Games</button>
+        <button class="pet-supplies" onclick="filterProducts('pet-supplies')">Pet Supplies</button>
+        <button class="automotive" onclick="filterProducts('automotive')">Automotive</button>
+        <button class="industrial-tools" onclick="filterProducts('industrial-tools')">Industrial & Tools</button>
+        <button class="electronics-accessories" onclick="filterProducts('electronics-accessories')">Electronics Accessories</button>
+        <button class="health-wellness" onclick="filterProducts('health-wellness')">Health & Wellness</button>
+        <button class="outdoor-garden" onclick="filterProducts('outdoor-garden')">Outdoor & Garden</button>
+        <button class="books-media" onclick="filterProducts('books-media')">Books & Media</button>
+        <button class="party-celebration" onclick="filterProducts('party-celebration')">Party & Celebration Supplies</button>
+        <button class="art-craft-supplies" onclick="filterProducts('art-craft-supplies')">Art & Craft Supplies</button>
+      </div>
 
       <div class="product-list">
+        <!-- Add products for each category and subcategory -->
         <div class="product" data-category="electronics">
           <h3>Smartphone</h3>
           <p>Category: Electronics</p>
@@ -175,10 +239,12 @@
           <p>Category: Books</p>
           <button onclick="addToCart('Cookbook')">Add to Cart</button>
         </div>
+
+        <!-- Add more products for the other categories and subcategories -->
       </div>
     </main>
 
-    <button class="checkout-button" onclick="window.location.href = 'checkout_page.html'">Checkout</button>
+    <button class="checkout-button" onclick="showCheckoutForm()">Checkout</button>
 
     <div class="checkout-form">
       <h3>Checkout</h3>
@@ -186,9 +252,14 @@
       <input type="text" id="name" placeholder="Enter your name">
       <label for="email">Email:</label>
       <input type="email" id="email" placeholder="Enter your email">
-      <label for="address"><address></address>address</address></address></label>
-      <input type ="address" id="address" placeholder="enter your address">
-      <button class="checkout-button" onclick="redirectToPaymentPage()">Checkout</button>
+      <label for="address">Address:</label>
+      <input type="text" id="address" placeholder="Enter your address">
+      <button class="checkout-button" onclick="completeCheckout()">Complete Checkout</button>
+    </div>
+
+    <div class="shopping-cart">
+      <h3>Shopping Cart</h3>
+      <ul id="cart-list"></ul>
     </div>
   </div>
 
@@ -209,21 +280,28 @@
 
     function addToCart(productName) {
       cart.push(productName);
-      alert(productName + ' added to cart.');
+      updateShoppingCart();
+    }
+
+    function updateShoppingCart() {
+      const cartList = document.getElementById('cart-list');
+      cartList.innerHTML = '';
+      cart.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        cartList.appendChild(li);
+      });
     }
 
     function showCheckoutForm() {
       const checkoutForm = document.querySelector('.checkout-form');
-      checkoutForm.style.display = 'block';a
+      checkoutForm.style.display = 'block';
     }
-    function redirectToPaymentPage() {
-      // You can change 'payment.html' to the actual URL of your payment page.
-      window.location.href = 'payments.html';
-    }
+
     function completeCheckout() {
       const name = document.getElementById('name').value;
       const email = document.getElementById('email').value;
-      const address=document.getElementById('address').value;
+      const address = document.getElementById('address').value;
       if (cart.length === 0) {
         alert('Your cart is empty.');
       } else {
