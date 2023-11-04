@@ -5,7 +5,7 @@ $users = [
     // Add more user data
 ];
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") { 
     $email = $_POST["email"];
 
     // Check if the email exists in the simulated database
