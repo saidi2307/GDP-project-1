@@ -94,6 +94,7 @@
             <h3>Product 1</h3>
             <p>Description of Product 1.</p>
             <p>Price: $10.00</p>
+            <button onclick="editItem(this, 10)">Edit</button>
             <button onclick="removeItem(this, 10)">Remove</button>
         </div>
 
@@ -101,11 +102,16 @@
             <h3>Product 2</h3>
             <p>Description of Product 2.</p>
             <p>Price: $15.00</p>
+            <button onclick="editItem(this, 15)">Edit</button>
             <button onclick="removeItem(this, 15)">Remove</button>
         </div>
 
         <div class="cart-total">
             <p>Total Price: $25.00</p>
+        </div>
+
+        <div class="checkout-button">
+            <button onclick="checkout()">Checkout</button>
         </div>
     </div>
 
@@ -122,10 +128,26 @@
             cartItem.remove();
 
             // Update the total price by subtracting the price of the removed item
+            updateTotal(-price);
+        }
+
+        function editItem(button, price) {
+            // Add your edit item logic here
+            // For example, you can open a modal or navigate to an edit page.
+        }
+
+        function updateTotal(priceDifference) {
+            // Update the total price by adding the price difference
             const totalElement = document.querySelector(".cart-total p");
             const currentTotal = parseFloat(totalElement.innerText.split(": $")[1]);
-            const newTotal = currentTotal - price;
+            const newTotal = currentTotal + priceDifference;
             totalElement.innerText = "Total Price: $" + newTotal.toFixed(2);
+        }
+
+        function checkout() {
+            // Add your checkout logic here
+            // For example, you can navigate to a checkout page.
+            window.location.href = 'checkout_page.html';
         }
     </script>
 </body>
