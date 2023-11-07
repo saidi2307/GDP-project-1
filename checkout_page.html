@@ -6,23 +6,22 @@
     <title>Checkout - Wholesale System</title>
     <style>
         body {
-            background-color: #9FE2BF;
-            background-image: url('wholesale.jpg');
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-attachment: fixed;
-            margin: 0;
             font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            margin: 0;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         h1 {
             text-align: center;
+            color: #333;
         }
 
         .cart-item {
@@ -34,34 +33,40 @@
         }
 
         .cart-item h3 {
-            margin: 0;
+            color: #333;
         }
 
         .cart-item p {
-            margin: 5px 0;
+            color: #666;
         }
 
         .checkout-form {
+            padding: 20px;
             background-color: #fff;
             border: 1px solid #ddd;
             border-radius: 5px;
-            padding: 20px;
             margin-top: 20px;
         }
 
         .checkout-button {
-            background-color: #4CAF50;
-            color: white;
+            background-color: #FF9900;
+            color: #fff;
             border: none;
-            padding: 10px 20px;
+            padding: 15px 25px;
             cursor: pointer;
             font-size: 18px;
             margin-top: 20px;
+            border-radius: 5px;
+        }
+
+        .checkout-button:hover {
+            background-color: #FF6600;
         }
 
         /* Style the form fields */
         .checkout-form label {
             font-weight: bold;
+            color: #333;
         }
 
         .checkout-form input[type="text"],
@@ -71,6 +76,7 @@
             margin-bottom: 10px;
             border: 1px solid #ddd;
             border-radius: 5px;
+            font-size: 16px;
         }
 
         .payment-option {
@@ -153,11 +159,7 @@
             var paymentMethod = document.getElementById("paymentMethod").value;
 
             if (paymentMethod === "creditCard") {
-                var cardNumber = document.getElementById("card").value;
-                var expirationDate = document.getElementById("exp").value;
-                var cvv = document.getElementById("cvv").value;
-                var cardholderName = document.getElementById("cardholder").value;
-
+                var cardNumber = document.getElementById("card")
                 if (cardNumber && expirationDate && cvv && cardholderName) {
                     alert("Thank you for your purchase! Your order has been placed.");
                     // You can send the payment information to your server for processing.
@@ -166,6 +168,14 @@
                 }
             } else if (paymentMethod === "paypal") {
                 // Handle PayPal payment processing here.
+                var paypalId = document.getElementById("paypalId").value;
+
+                if (paypalId) {
+                    alert("Thank you for your purchase! Your order has been placed.");
+                    // You can initiate the PayPal payment process.
+                } else {
+                    document.getElementById("checkoutMessage").textContent = "Please enter your PayPal ID to checkout.";
+                }
             }
         }
 
