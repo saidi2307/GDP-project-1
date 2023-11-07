@@ -91,17 +91,17 @@
             </div>
 
         </div>
-        <form action="process_payment.php" method="post">
+        <form action="process_payment.php" method="post" id="payment-form">
             <div class="input-container">
                 <label for="cardholder">Cardholder Name</label>
                 <input type="text" id="cardholder" name="cardholder" required>
             </div>
-         <div class="input-container">
+            <div class="input-container">
                 <label for="card-number">Card Number</label>
                 <input type="text" id="card-number" name="card-number" required>
                 <span id="card-number-error" class="error-message">Please enter a valid card number.</span>
+                <img id="card-type-icon" src="" alt="Card Type">
             </div>
-
             <div class="input-container">
                 <label for="expiration">Expiration Date</label>
                 <input type="text" id="expiration" name="expiration" placeholder="MM/YY" required>
@@ -114,8 +114,47 @@
                 <label for="amount">Payment Amount</label>
                 <input type="text" id="amount" name="amount" required>
             </div>
-            <button type="submit" class="btn">Submit Payment</button>
+            <button type="submit" class="btn" id="submit-button">Submit Payment</button>
+            <div id="loading-spinner">Loading...</div>
         </form>
     </div>
+
+    <script>
+        // Card Type Detection (Example)
+        document.getElementById('card-number').addEventListener('input', function () {
+            var cardNumber = this.value;
+            var cardTypeIcon = document.getElementById('card-type-icon');
+            if (isVisa(cardNumber)) {
+                cardTypeIcon.src = 'visa-icon.png';
+            } else if (isMasterCard(cardNumber)) {
+                cardTypeIcon.src = 'mastercard-icon.png';
+            } else {
+                cardTypeIcon.src = '';
+            }
+        });
+
+        function isVisa(cardNumber) {
+            return /^4[0-9]{12}(?:[0-9]{3})?$/.test(cardNumber);
+        }
+
+        function isMasterCard(cardNumber) {
+            return /^5[1-5][0-9]{14}$/.test(cardNumber);
+        }
+
+        // Loading Indicator (Example)
+        document.getElementById('payment-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            var submitButton = document.getElementById('submit-button');
+            var loadingSpinner = document.getElementById('loading-spinner');
+            
+            submitButton.style.display = 'none';
+            loadingSpinner.style.display = 'inline-block';
+
+            // Simulate a delay (replace with actual payment processing)
+            setTimeout(function () {
+                this.submit(); // Submit the form
+            }.bind(this), 3000); // Change 3000 to actual processing time
+        });
+    </script>
 </body>
 </html>
