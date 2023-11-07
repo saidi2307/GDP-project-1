@@ -167,13 +167,32 @@
       cursor: pointer;
       font-size: 18px;
     }
+
+    /* Add your search bar styles here */
+    .header input[type="text"] {
+      width: 70%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    .header button#search-button {
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <header class="header">
+    <div class="header">
       <h1>Wholesale Products</h1>
-    </header>
+      <input type="text" id="search-bar" placeholder="Search products...">
+      <button id="search-button">Search</button>
+    </div>
 
     <main class="main-content">
       <div class="sidebar">
@@ -184,22 +203,7 @@
         <!-- Add more categories -->
         <button class="sub-category" onclick="filterProducts('subcategory1')">Subcategory 1</button>
         <button class="sub-category" onclick="filterProducts('subcategory2')">Subcategory 2</button>
-        <button class="home-appliances" onclick="filterProducts('home-appliances')">Home Appliances</button>
-        <button class="furniture" onclick="filterProducts('furniture')">Furniture</button>
-        <button class="kitchen-appliances" onclick="filterProducts('kitchen-appliances')">Kitchen Appliances</button>
-        <button class="sports-fitness" onclick="filterProducts('sports-fitness')">Sports & Fitness</button>
-        <button class="personal-care" onclick="filterProducts('personal-care')">Beauty & Personal Care</button>
-        <button class="office-supplies" onclick="filterProducts('office-supplies')">Office Supplies</button>
-        <button class="toys-games" onclick="filterProducts('toys-games')">Toys & Games</button>
-        <button class="pet-supplies" onclick="filterProducts('pet-supplies')">Pet Supplies</button>
-        <button class="automotive" onclick="filterProducts('automotive')">Automotive</button>
-        <button class="industrial-tools" onclick="filterProducts('industrial-tools')">Industrial & Tools</button>
-        <button class="electronics-accessories" onclick="filterProducts('electronics-accessories')">Electronics Accessories</button>
-        <button class="health-wellness" onclick="filterProducts('health-wellness')">Health & Wellness</button>
-        <button class="outdoor-garden" onclick="filterProducts('outdoor-garden')">Outdoor & Garden</button>
-        <button class="books-media" onclick="filterProducts('books-media')">Books & Media</button>
-        <button class="party-celebration" onclick="filterProducts('party-celebration')">Party & Celebration Supplies</button>
-        <button class="art-craft-supplies" onclick="filterProducts('art-craft-supplies')">Art & Craft Supplies</button>
+        <!-- Add more categories here -->
       </div>
 
       <div class="product-list">
@@ -239,7 +243,6 @@
           <p>Category: Books</p>
           <button onclick="addToCart('Cookbook')">Add to Cart</button>
         </div>
-
         <!-- Add more products for the other categories and subcategories -->
       </div>
     </main>
@@ -309,6 +312,27 @@
         // You can add further processing or send the order details to a server here.
       }
     }
+
+    // Your search functionality JavaScript code here
+    const searchBar = document.getElementById('search-bar');
+    const searchButton = document.getElementById('search-button');
+
+    function performSearch() {
+      const searchTerm = searchBar.value.toLowerCase();
+      const products = document.querySelectorAll('.product');
+
+      products.forEach(product => {
+        const productName = product.querySelector('h3').textContent.toLowerCase();
+
+        if (productName.includes(searchTerm)) {
+          product.style.display = 'block'; // Show the product
+        } else {
+          product.style.display = 'none'; // Hide the product
+        }
+      });
+    }
+
+    searchButton.addEventListener('click', performSearch);
   </script>
 </body>
 </html>
