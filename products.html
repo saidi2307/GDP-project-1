@@ -85,6 +85,17 @@
       padding: 20px;
       display: flex;
       flex-wrap: wrap;
+      opacity: 0; /* Initial opacity set to 0 */
+      animation: fadeIn 1s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
     }
 
     .product {
@@ -94,6 +105,17 @@
       padding: 10px;
       margin: 10px;
       border-radius: 5px;
+      opacity: 0; /* Initial opacity set to 0 */
+      animation: fadeInProduct 1s ease-in-out forwards;
+    }
+
+    @keyframes fadeInProduct {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
     }
 
     .product h3 {
@@ -200,14 +222,49 @@
         <button class="electronics" onclick="filterProducts('electronics')">Electronics</button>
         <button class="clothing" onclick="filterProducts('clothing')">Clothing</button>
         <button class="books" onclick="filterProducts('books')">Books</button>
-        <!-- Add more categories -->
-        <button class="sub-category" onclick="filterProducts('subcategory1')">Subcategory 1</button>
-        <button class="sub-category" onclick="filterProducts('subcategory2')">Subcategory 2</button>
-        <!-- Add more categories here -->
+        
       </div>
 
       <div class="product-list">
-        <!-- Add products for each category and subcategory -->
+        <!-- Add products for
+      <!-- Add more products and subcategories -->
+<div class="product" data-category="electronics">
+  <h3>Headphones</h3>
+  <p>Category: Electronics</p>
+  <button onclick="addToCart('Headphones')">Add to Cart</button>
+</div>
+
+<div class="product" data-category="electronics">
+  <h3>Smartwatch</h3>
+  <p>Category: Electronics</p>
+  <button onclick="addToCart('Smartwatch')">Add to Cart</button>
+</div>
+
+<div class="product" data-category="clothing">
+  <h3>Hoodie</h3>
+  <p>Category: Clothing</p>
+  <button onclick="addToCart('Hoodie')">Add to Cart</button>
+</div>
+
+<div class="product" data-category="clothing">
+  <h3>Sneakers</h3>
+  <p>Category: Clothing</p>
+  <button onclick="addToCart('Sneakers')">Add to Cart</button>
+</div>
+
+<div class="product" data-category="books">
+  <h3>Science Fiction</h3>
+  <p>Category: Books</p>
+  <button onclick="addToCart('Science Fiction')">Add to Cart</button>
+</div>
+
+<div class="product" data-category="books">
+  <h3>Biography</h3>
+  <p>Category: Books</p>
+  <button onclick="addToCart('Biography')">Add to Cart</button>
+</div>
+
+      
         <div class="product" data-category="electronics">
           <h3>Smartphone</h3>
           <p>Category: Electronics</p>
