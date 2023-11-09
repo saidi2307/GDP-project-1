@@ -169,4 +169,90 @@
     </div>
     <div class="emojis-stickers"></div>
 </body>
+<script>
+    // Function to handle incoming customer messages
+    function handleCustomerMessage(message) {
+        const userMessages = document.querySelector('.chat');
+        
+        // Display the customer's message
+        const customerMessage = createMessage('user', message);
+        userMessages.appendChild(customerMessage);
+
+        // Check the customer's message and respond accordingly
+        switch (message.toLowerCase()) {
+            case 'how to place an order':
+                respondToCustomer("To place an order, visit our website, add products to your cart, and proceed to checkout.");
+                break;
+            case 'return policy':
+                respondToCustomer("Our return policy allows returns within [Specify the number of days] days of purchase. Visit our 'Returns' page for details.");
+                break;
+            case 'international shipping':
+                respondToCustomer("Yes, we offer international shipping. Shipping options and costs can be found during checkout.");
+                break;
+            case 'track my order':
+                respondToCustomer("You can track your order in your account or via the tracking link sent to your email.");
+                break;
+            case 'customer support hours':
+                respondToCustomer("Our support team is available [Specify your hours of operation].");
+                break;
+            case 'promotions and discounts':
+                respondToCustomer("Check our 'Promotions' page for current deals and savings.");
+                break;
+            case 'reset password':
+                respondToCustomer("Forgot your password? Click 'Forgot Password' on the login page for reset instructions.");
+                break;
+            case 'payment methods':
+                respondToCustomer("We accept credit cards, debit cards, PayPal, and more. Choose your preferred method during checkout.");
+                break;
+            case 'product information':
+                respondToCustomer("Sure! [Product Name] is a [brief description]. It features [key features] and comes in various options.");
+                break;
+            case 'contact information':
+                respondToCustomer("Reach us via live chat, email at [Your support email], or call at [Your support phone number].");
+                break;
+            default:
+                respondToCustomer("Thank you for reaching out. Our team will assist you shortly.");
+                break;
+        }
+    }
+
+    // Function to create a chat message
+    function createMessage(sender, text) {
+        const messageContainer = document.createElement('div');
+        messageContainer.classList.add('message', sender);
+        messageContainer.innerHTML = `
+            <div class="profile-image ${sender}">
+                <img src="${sender === 'user' ? 'user-image.png' : 'support-rep-image.png'}" alt="${sender === 'user' ? 'User' : 'Support Representative'}">
+            </div>
+            <div class="message-content">
+                <p>${text}</p>
+                <span class="timestamp">${getTime()}</span>
+            </div>
+        `;
+        return messageContainer;
+    }
+
+    // Function to add a response to the chat
+    function respondToCustomer(responseText) {
+        const supportMessages = document.querySelector('.chat');
+        const supportMessage = createMessage('support-rep', responseText);
+        supportMessages.appendChild(supportMessage);
+    }
+
+    // Function to get the current time
+    function getTime() {
+        const now = new Date();
+        return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    }
+
+    // Event listener for user input
+    const userInput = document.querySelector('.user-input input[type="text"]');
+    userInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' && userInput.value.trim() !== '') {
+            const customerMessage = userInput.value;
+            handleCustomerMessage(customerMessage);
+            userInput.value = '';
+        }
+    });
+</script>
 </html>
