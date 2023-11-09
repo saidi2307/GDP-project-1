@@ -26,7 +26,9 @@
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin: 20px;
-        }
+
+}
+        
 
         label {
             display: block;
@@ -90,20 +92,44 @@
         td button:hover {
             background-color: #c0392b;
         }
+
+        
+        #searchItem {
+          width: 100%;
+         padding: 10px;
+          margin-bottom: 10px;
+         border: 1px solid #ccc;
+       border-radius: 5px;
+
+        }
+
+        table tbody tr:hover {
+    background-color: #e6e6e6;
+}
+
+#totalItems {
+    font-weight: bold;
+}
+
     </style>
 </head>
 <body>
     <h1>Inventory Management</h1>
 
     <form>
+        <label for="searchItem">Search Item:</label>
+ <input type="text" id="searchItem" name="searchItem" onkeyup="searchItem()" placeholder="Search by name">
         <label for="itemName">Item Name:</label>
         <input type="text" id="itemName" name="itemName" required>
         <label for="itemQuantity">Quantity:</label>
-        <input type="number" id="itemQuantity" name="itemQuantity" required>
+        <input type="number" id="itemQuantity" name="itemQuantity" required min="0">
         <button type="button" onclick="addItem()">Add Item</button>
+        
     </form>
 
     <table>
+        <p>Total Items: <span id="totalItems">0</span></p>
+        
         <thead>
             <tr>
                 <th>Item Name</th>
