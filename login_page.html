@@ -8,61 +8,102 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
         }
+
         .container {
-            max-width: 400px;
-            margin: 0 auto;
-            padding: 20px;
-            border: 1px solid #ccc;
+            background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            padding: 20px;
+            width: 400px;
         }
+
+        .container h2 {
+            text-align: center;
+        }
+
         .form-group {
             margin-bottom: 15px;
         }
-        label {
+
+        .form-group label {
             display: block;
             margin-bottom: 5px;
         }
 
-        input[type="email"],
-        input[type="password"]  {
+        .form-group input[type="email"],
+        .form-group input[type="password"] {
             width: 100%;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
+
         .error-border {
             border: 1px solid red;
         }
+
         /* Custom button styles */
         button[type="submit"] {
-            background-color: #FF9900; /* Change to your desired color */
+            background-color: #FF9900;
             color: #fff;
             border: none;
-            padding: 15px 20px; /* Adjust the padding for button size */
+            padding: 15px 20px;
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
+            width: 100%;
         }
+
         /* Hover effect for the button */
         button[type="submit"]:hover {
-            background-color: #FF6600; /* Change to your desired hover color */
+            background-color: #FF6600;
         }
+
+        button[type="button"] {
+            background-color: #008CBA;
+            color: #fff;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        /* Hover effect for the button */
+        button[type="button"]:hover {
+            background-color: #005f80;
+        }
+
+        a {
+            text-align: center;
+            display: block;
+            color: #008CBA;
+            text-decoration: none;
+        }
+
     </style>
 </head>
 <body>
     <div class="container">
         <h2>Login</h2>
         <form action="login_page.html" method="POST" id="loginForm">
-            <label for="email"><b>Email</b></label>
             <div class="form-group">
+                <label for="email"><b>Email</b></label>
                 <input type="email" id="email" name="email" placeholder="Enter email" required pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$"
-                title="Please enter a valid email address"><br><br>
+                    title="Please enter a valid email address">
             </div>
-            <label for="password"><b>Password</b></label>
             <div class="form-group">
+                <label for="password"><b>Password</b></label>
                 <input type="password" id="password" name="password" placeholder="Enter Password" required pattern=".{8,}"
-                title="Password must be at least 8 characters long,capital Letter, Small Letter, Number, Special Character"><br><br>
+                    title="Password must be at least 8 characters long, capital Letter, Small Letter, Number, Special Character">
             </div>
             <div class="form-group">
                 <button type="submit" id="submit">Login</button>
@@ -72,8 +113,6 @@
                 <a href="Forgot_Password.html">Forgot Password</a>
             </div>
         </form>
-
-        
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-app-compat.js"></script>
@@ -82,14 +121,14 @@
     <script>
         // Initialize Firebase with your project configuration
         const firebaseConfig = {
-  apiKey: "AIzaSyBQp2gpBdXOLxr3Z32FC9b-64Ad1jH618w",
-  authDomain: "gdp-team-1.firebaseapp.com",
-  projectId: "gdp-team-1",
-  storageBucket: "gdp-team-1.appspot.com",
-  messagingSenderId: "60916149363",
-  appId: "1:60916149363:web:8790809a0bdeccd2de8e06",
-  measurementId: "G-BJXVYGMJXW"
-};
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID",
+            measurementId: "YOUR_MEASUREMENT_ID"
+        };
 
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
