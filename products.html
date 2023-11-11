@@ -339,9 +339,11 @@
     }
 
     function addToCart(productName) {
-      cart.push(productName);
-      updateShoppingCart();
-    }
+    cart.push(productName);
+    updateShoppingCart();
+    alert(`${productName} added to the cart.`);
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
 
     function updateShoppingCart() {
       const cartList = document.getElementById('cart-list');
