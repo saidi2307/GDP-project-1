@@ -73,7 +73,12 @@
 
         .message.sent .message-content {
             background-color: #d6e6f7;
-            align-self: flex-end;
+            align-self: flex-start; /* Align app messages' content to the left */
+        }
+
+        .message.user .message-content {
+            background-color: #d6f7e6;
+            align-self: flex-end; /* Align customer messages' content to the right */
         }
 
         .profile-image img {
@@ -144,6 +149,18 @@
             margin-top: 15px;
             color: #555;
         }
+
+        /* Add these styles to your existing styles in the <style> tag */
+        .timestamp {
+            font-size: 12px;
+            color: #777;
+        }
+
+        .message-status {
+            font-size: 12px;
+            color: #777;
+            margin-left: 5px;
+        }
     </style>
 </head>
 
@@ -165,7 +182,7 @@
                         <span class="timestamp">12:05 PM</span>
                     </div>
                 </div>
-                <div class="message sent">
+                <div class="message user">
                     <div class="profile-image user">
                         <img src="user-image.png" alt="User">
                     </div>
@@ -260,7 +277,7 @@
     // Function to add a response to the chat
     function respondToCustomer(responseText) {
         const supportMessages = document.querySelector('.chat');
-        const supportMessage = createMessage('support-rep', responseText);
+        const supportMessage = createMessage('sent', responseText); // Change 'support-rep' to 'sent'
         supportMessages.appendChild(supportMessage);
     }
 
