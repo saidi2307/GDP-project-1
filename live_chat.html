@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wholesale System Live Chat</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f1f1f1;
             margin: 0;
             padding: 0;
@@ -13,12 +16,18 @@
         header {
             background-color: #35424a;
             color: #fff;
-            padding: 10px;
+            padding: 20px 0;
             text-align: center;
         }
 
+        header img {
+            max-width: 80px;
+            max-height: 80px;
+            border-radius: 50%;
+        }
+
         h1 {
-            margin: 0;
+            margin: 10px 0;
         }
 
         .chat-container {
@@ -27,36 +36,44 @@
             flex-direction: column;
             align-items: center;
             padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            margin: 20px auto;
+            width: 90%;
+            max-width: 800px;
         }
 
         .chat-window {
             background-color: #fff;
             border-radius: 10px;
-            width: 80%;
+            width: 100%;
             padding: 20px;
-            margin: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
         }
 
         .chat {
             display: flex;
             flex-direction: column;
+            gap: 15px; /* Added gap between messages */
         }
 
         .message {
             display: flex;
-            margin: 10px 0;
+            flex-direction: column;
         }
 
         .message-content {
             background-color: #edf0f2;
-            padding: 10px;
-            border-radius: 5px;
-            margin-left: 10px;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            width: 70%;
         }
 
         .message.sent .message-content {
             background-color: #d6e6f7;
+            align-self: flex-end;
         }
 
         .profile-image img {
@@ -76,6 +93,7 @@
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
+            margin-right: 10px;
         }
 
         button {
@@ -84,16 +102,12 @@
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
-            margin-left: 10px;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
 
         button:hover {
             background-color: #29363b;
-        }
-
-        .user-input input[type="text"] {
-            border: 1px solid #ccc;
         }
 
         .end-chat button {
@@ -104,19 +118,35 @@
             background-color: #ff4141;
         }
 
-        .file-sharing input[type="file"], .file-sharing button {
+        .file-sharing input[type="file"],
+        .file-sharing button {
             background-color: #3db69e;
             color: #fff;
             border: none;
             padding: 10px;
             border-radius: 5px;
+            margin-top: 10px;
+            display: block;
         }
 
         .file-sharing button:hover {
             background-color: #35a38b;
         }
+
+        .file-expiry-info {
+            font-size: 14px;
+            color: #777;
+            margin-top: 5px;
+            display: block;
+        }
+
+        .audit-trail {
+            margin-top: 15px;
+            color: #555;
+        }
     </style>
 </head>
+
 <body>
     <header>
         <img src="company-logo.png" alt="Company Logo">
@@ -150,30 +180,25 @@
                 <button>Send</button>
             </div>
         </div>
-        <div class="user-list"></div>
-    </div>
-    <div class="notifications"></div>
-    <div class="sidebar"></div>
-    <div class="end-chat">
-        <button>End Chat</button>
     </div>
     <div class="file-sharing">
         <input type="file" id="file-input">
         <button id="send-file">Send File</button>
-
-    <!-- File Expiry: Implement file expiration policies to limit the time files are accessible -->
-    <span class="file-expiry-info">This file will expire in 7 days.</span>
-    <!-- Audit Trail: Maintain an audit trail to track file access and activities for accountability -->
-    <div class="audit-trail">
-        <p><strong>Audit Trail:</strong></p>
+        <span class="file-expiry-info">This file will expire in 7 days.</span>
+        <div class="audit-trail">
+            <p><strong>Audit Trail:</strong></p>
+        </div>
     </div>
-    <div class="emojis-stickers"></div>
+    <div class="end-chat">
+        <button>End Chat</button>
+    </div>
 </body>
+
 <script>
     // Function to handle incoming customer messages
     function handleCustomerMessage(message) {
         const userMessages = document.querySelector('.chat');
-        
+
         // Display the customer's message
         const customerMessage = createMessage('user', message);
         userMessages.appendChild(customerMessage);
@@ -254,5 +279,13 @@
             userInput.value = '';
         }
     });
+
+    // Event listener for the "End Chat" button
+    const endChatButton = document.querySelector('.end-chat button');
+    endChatButton.addEventListener('click', () => {
+        // Navigate to the Wholesale System page
+        window.location.href = 'main_page.html';
+    });
 </script>
+
 </html>
