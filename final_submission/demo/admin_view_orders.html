@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Orders</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #ddd;
+            transition: background-color 0.3s;
+        }
+        a {
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: #555;
+        }
+        nav ul {
+            list-style: none;
+            background-color: #333;
+            text-align: center;
+            padding: 10px;
+        }
+        nav ul {
+            background-color: #444;
+
+        }
+        nav li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav a {
+            color: #66C2FF;
+        }
+    </style>
+</head>
+<body>
+    <h1>Orders</h1>
+    <nav>
+        <ul>
+            <li><a href="admin_page.html">Home</a></li>
+            <li><a href="manage_inventory.html" target="_blank">Manage Inventory</a></li>
+
+            <li><a href="admin_view_orders.html">View Orders</a></li>
+            <li><a href="calculate_profit.html">Calculate Profit</a></li>
+            <li><a href="admin_customer _support.html">Customer Support</a></li>
+        </ul>
+    </nav>
+    <table>
+        <tr>
+            <th>Product</th>
+            <th>Order Date</th>
+            <th>Category</th>
+            <th>Location</th>
+        </tr>
+        <tr>
+            <td><a href="product1.html">Product 1</a></td>
+            <td>19 March 2023</td>
+            <td>Electronics</td>
+            <td>Missouri</td>
+        </tr>
+        <tr>
+            <td><a href="product2.html">Product 2</a></td>
+            <td>2 February 2023</td>
+            <td>Fashion</td>
+            <td>Texas</td>
+        </tr>
+        <tr>
+            <td><a href="product3.html">Product 3</a></td>
+            <td>31 January 2023</td>
+            <td>Books</td>
+            <td>Illinois</td>
+        </tr>
+        <tr>
+            <td><a href="product4.html">Product 4</a></td>
+            <td>29 January 2023</td>
+            <td>Beverages</td>
+            <td>Florida</td>
+        </tr>
+    </table>
+</body>
+</html>

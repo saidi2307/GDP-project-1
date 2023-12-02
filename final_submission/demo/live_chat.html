@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wholesale System Live Chat</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f1f1f1;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #35424a;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header img {
+            max-width: 80px;
+            max-height: 80px;
+            border-radius: 50%;
+        }
+
+        h1 {
+            margin: 10px 0;
+        }
+
+        .chat-container {
+            background-color: #f7f7f7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            margin: 20px auto;
+            width: 90%;
+            max-width: 800px;
+        }
+
+        .chat-window {
+            background-color: #fff;
+            border-radius: 10px;
+            width: 100%;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .chat {
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* Added gap between messages */
+        }
+
+        .message {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .message-content {
+            background-color: #edf0f2;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            width: 70%;
+        }
+
+        .message.sent .message-content {
+            background-color: #d6e6f7;
+            align-self: flex-start; /* Align app messages' content to the left */
+        }
+
+        .message.user .message-content {
+            background-color: #d6f7e6;
+            align-self: flex-end; /* Align customer messages' content to the right */
+        }
+
+        .profile-image img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .user-input {
+            display: flex;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        button {
+            background-color: #35424a;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #29363b;
+        }
+
+        .end-chat button {
+            background-color: #ff5959;
+        }
+
+        .end-chat button:hover {
+            background-color: #ff4141;
+        }
+
+        .file-sharing input[type="file"],
+        .file-sharing button {
+            background-color: #3db69e;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            display: block;
+        }
+
+        .file-sharing button:hover {
+            background-color: #35a38b;
+        }
+
+        .file-expiry-info {
+            font-size: 14px;
+            color: #777;
+            margin-top: 5px;
+            display: block;
+        }
+
+        .audit-trail {
+            margin-top: 15px;
+            color: #555;
+        }
+
+        /* Add these styles to your existing styles in the <style> tag */
+        .timestamp {
+            font-size: 12px;
+            color: #777;
+        }
+
+        .message-status {
+            font-size: 12px;
+            color: #777;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="company-logo.png" alt="Company Logo">
+        <h1>Wholesale System Live Chat</h1>
+        <div class="user-profile"></div>
+    </header>
+    <div class="chat-container">
+        <div class="chat-window">
+            <div class="chat">
+                <div class="message received">
+                    <div class="profile-image support-rep">
+                        <img src="support-rep-image.png" alt="Support Representative">
+                    </div>
+                    <div class="message-content">
+                        <p><strong>Support Rep:</strong> Hello! How can we assist you today?</p>
+                        <span class="timestamp">12:05 PM</span>
+                    </div>
+                </div>
+                <div class="message user">
+                    <div class="profile-image user">
+                        <img src="user-image.png" alt="User">
+                    </div>
+                    <div class="message-content">
+                        <p><strong>User:</strong> I have a question about our wholesale prices.</p>
+                        <span class="timestamp">12:08 PM</span>
+                    </div>
+                </div>
+            </div>
+            <div class="user-input">
+                <input type="text" placeholder="Type your message...">
+                <button>Send</button>
+            </div>
+        </div>
+    </div>
+    <div class="file-sharing">
+        <input type="file" id="file-input">
+        <button id="send-file">Send File</button>
+        <span class="file-expiry-info">This file will expire in 7 days.</span>
+        <div class="audit-trail">
+            <p><strong>Audit Trail:</strong></p>
+        </div>
+    </div>
+    <div class="end-chat">
+        <button>End Chat</button>
+    </div>
+</body>
+
+<script>
+    // Function to handle incoming customer messages
+    function handleCustomerMessage(message) {
+        const userMessages = document.querySelector('.chat');
+
+        // Display the customer's message
+        const customerMessage = createMessage('user', message);
+        userMessages.appendChild(customerMessage);
+
+        // Check the customer's message and respond accordingly
+        switch (message.toLowerCase()) {
+            case 'how to place an order':
+                respondToCustomer("To place an order, visit our website, add products to your cart, and proceed to checkout.");
+                break;
+            case 'return policy':
+                respondToCustomer("Our return policy allows returns within [Specify the number of days] days of purchase. Visit our 'Returns' page for details.");
+                break;
+            case 'international shipping':
+                respondToCustomer("Yes, we offer international shipping. Shipping options and costs can be found during checkout.");
+                break;
+            case 'track my order':
+                respondToCustomer("You can track your order in your account or via the tracking link sent to your email.");
+                break;
+            case 'customer support hours':
+                respondToCustomer("Our support team is available [Specify your hours of operation].");
+                break;
+            case 'promotions and discounts':
+                respondToCustomer("Check our 'Promotions' page for current deals and savings.");
+                break;
+            case 'reset password':
+                respondToCustomer("Forgot your password? Click 'Forgot Password' on the login page for reset instructions.");
+                break;
+            case 'payment methods':
+                respondToCustomer("We accept credit cards, debit cards, PayPal, and more. Choose your preferred method during checkout.");
+                break;
+            case 'product information':
+                respondToCustomer("Sure! [Product Name] is a [brief description]. It features [key features] and comes in various options.");
+                break;
+            case 'contact information':
+                respondToCustomer("Reach us via live chat, email at [Your support email], or call at [Your support phone number].");
+                break;
+            default:
+                respondToCustomer("Thank you for reaching out. Our team will assist you shortly.");
+                break;
+        }
+    }
+
+    // Function to create a chat message
+    function createMessage(sender, text) {
+        const messageContainer = document.createElement('div');
+        messageContainer.classList.add('message', sender);
+        messageContainer.innerHTML = `
+            <div class="profile-image ${sender}">
+                <img src="${sender === 'user' ? 'user-image.png' : 'support-rep-image.png'}" alt="${sender === 'user' ? 'User' : 'Support Representative'}">
+            </div>
+            <div class="message-content">
+                <p>${text}</p>
+                <span class="timestamp">${getTime()}</span>
+            </div>
+        `;
+        return messageContainer;
+    }
+
+    // Function to add a response to the chat
+    function respondToCustomer(responseText) {
+        const supportMessages = document.querySelector('.chat');
+        const supportMessage = createMessage('sent', responseText); // Change 'support-rep' to 'sent'
+        supportMessages.appendChild(supportMessage);
+    }
+
+    // Function to get the current time
+    function getTime() {
+        const now = new Date();
+        return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    }
+
+    // Event listener for user input
+    const userInput = document.querySelector('.user-input input[type="text"]');
+    userInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' && userInput.value.trim() !== '') {
+            const customerMessage = userInput.value;
+            handleCustomerMessage(customerMessage);
+            userInput.value = '';
+        }
+    });
+
+    // Event listener for the "End Chat" button
+    const endChatButton = document.querySelector('.end-chat button');
+    endChatButton.addEventListener('click', () => {
+        // Navigate to the Wholesale System page
+        window.location.href = 'main_page.html';
+    });
+</script>
+
+</html>
