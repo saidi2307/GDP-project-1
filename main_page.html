@@ -190,6 +190,12 @@
     padding: 20px;
     display: none;
 }
+.nav_logo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
 
     </style>
 </head>
@@ -198,7 +204,10 @@
              background-repeat: no-repeat;
              background-size: cover;
              background-attachment: fixed;">
-
+    <div class="nav_logo">
+        <a href="main_page.html">
+            <img src="wholesale_logo.png" height="100px" width="100px"> 
+        </a>       
     <div class="flex-right">
         <div class="search-container">
               <input type="text" placeholder="search for products" name="search" id="searchInput">
@@ -218,6 +227,7 @@
         <div class="sign">
             <h2 onclick="window.location.href = 'signup.html'">Sign in</h2>
         </div>
+    </div>
     </div>
 
     <div class="container">
