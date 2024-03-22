@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head th:replace="~{fragments/Head::head}">
+    <body>
+      <div th:replace="~{fragments/Navbar::admin-navbar}"></div>
+      <script th:replace="~{fragments/Scripts::script1}"></script>
+      <script th:replace="~{fragments/Scripts::script3}"></script>
+      <script th:replace="~{fragments/Scripts::script2}"></script>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+      <div class="container mt-5">
+        <h1 class="mb-4">Admin Dashboard</h1>
+
+        <div>
+          <label for="startMonth">Start Month:</label>
+          <select id="startMonth" class="form-control mb-2 mt-2">
+            <option value="1" selected>January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+          </select>
+
+          <label for="endMonth">End Month:</label>
+          <select id="endMonth" class="form-control mb-2 mt-2">
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12" selected>December</option>
+          </select>
+
+          <button onclick="updateChart()" class="btn btn-primary">Update</button>
+          <br /><br />
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <h3>Sales Chart</h3>
+            <div id="chart-container">
+              <canvas id="salesChart"></canvas>
+            </div>
+            <br />
+            <br />
+          </div>
+          <div class="col-md-6">
+            <h3>Orders Chart</h3>
+
+            <div id="chart-container-2">
+              <canvas id="salesChart2"></canvas>
+            </div>
+
+            <br />
+            <br />
+          </div>
+        </div>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', function () {
+            fetch('/admin/monthly-sales', {
+              method: 'GET', // Adjust the method as needed
+              headers: {
+                'Content-Type': 'application/json',
+              },
+            })
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error('Network response was not ok');
+                }
+                return response.json();
+              })
+              .then((data) => {
+                renderChart(data);
+              })
+              .catch((error) => {
+                console.error('Error:', error);
+              });
+          });
+
+          // Dummy data for demonstration
+          const monthlySales = {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            salesData: [],
+            amountData: [],
+            // salesData: [5000, 6000, 7000, 8000, 9000, 10000, 11000, 12000, 13000, 14000, 15000, 16000],
+            // amountData: [25000, 26000, 27000, 28000, 29000, 30000, 31000, 32000, 33000, 34000, 35000, 36000]
+          };
+
+          // Create a line chart
+          const salesCtx = document.getElementById('salesChart').getContext('2d');
+          const salesChart = new Chart(salesCtx, {
+            type: 'line',
+            data: {
+              labels: monthlySales.labels,
+              datasets: [
+                {
+                  label: 'Sales',
+                  data: monthlySales.salesData,
+                  borderColor: 'rgb(75, 192, 192)',
+                  fill: false,
+                },
+              ],
+            },
+            options: {
+              responsive: true,
+              title: {
+                display: true,
+                text: 'Monthly Sales',
+              },
+              scales: {
+                xAxes: [
+                  {
+                    scaleLabel: {
+                      display: true,
+                      labelString: 'Month',
+                    },
+                  },
+                ],
+                yAxes: [
+                  {
+                    scaleLabel: {
+                      display: true,
+                      labelString: 'Value',
+                    },
+                  },
+                ],
+              },
+            },
+          });
+
+          const salesCtx2 = document.getElementById('salesChart2').getContext('2d');
+          const salesChart2 = new Chart(salesCtx2, {
+            type: 'line',
+            data: {
+              labels: monthlySales.labels,
+              datasets: [
+                {
+                  label: 'Amount',
+                  data: monthlySales.amountData,
+                  borderColor: 'rgb(255, 99, 132)',
+                  fill: false,
+                },
+              ],
+            },
+            options: {
+              responsive: true,
+              title: {
+                display: true,
+                text: 'Monthly Amount',
+              },
+              scales: {
+                xAxes: [
+                  {
+                    scaleLabel: {
+                      display: true,
+                      labelString: 'Month',
+                    },
+                  },
+                ],
+                yAxes: [
+                  {
+                    scaleLabel: {
+                      display: true,
+                      labelString: 'Value',
+                    },
+                  },
+                ],
+              },
+            },
+          });
+
+          function renderChart(data) {
+            for (let i = 1; i <= 12; i++) {
+              var matched = false;
+
+              data.forEach((item) => {
+                var month = item.month;
+                var amount = item.amount;
+                var numberOfOrders = item.numberOfOrders;
+
+                if (i == month) {
+                  matched = true;
+                  monthlySales.salesData.push(numberOfOrders);
+                  monthlySales.amountData.push(amount);
+                }
+              });
+
+              if (!matched) {
+                monthlySales.salesData.push(0);
+                monthlySales.amountData.push(0);
+              }
+            }
+            console.log(monthlySales);
+            updateChart();
+          }
+
+          function updateChart() {
+            const startMonthSelect = document.getElementById('startMonth');
+            const endMonthSelect = document.getElementById('endMonth');
+
+            startMonthIndex = startMonthSelect.value - 1;
+            endMonthIndex = endMonthSelect.value - 1;
+
+            salesChart.data.labels = monthlySales.labels.slice(startMonthIndex, endMonthIndex + 1);
+            salesChart.data.datasets[0].data = monthlySales.salesData.slice(startMonthIndex, endMonthIndex + 1);
+            // salesChart.data.datasets[1].data = monthlySales.amountData.slice(startMonthIndex, endMonthIndex + 1);
+
+            salesChart2.data.labels = monthlySales.labels.slice(startMonthIndex, endMonthIndex + 1);
+            // salesChart2.data.datasets[0].data = monthlySales.salesData.slice(startMonthIndex, endMonthIndex + 1);
+            salesChart2.data.datasets[0].data = monthlySales.amountData.slice(startMonthIndex, endMonthIndex + 1);
+            // salesChart2.data.datasets[1].data = monthlySales.amountData.slice(startMonthIndex, endMonthIndex + 1);
+
+            salesChart.update();
+            salesChart2.update();
+          }
+        </script>
+      </div>
+      <div th:replace="~{fragments/Footer::admin-footer}"></div>
+    </body>
+  </head>
+</html>

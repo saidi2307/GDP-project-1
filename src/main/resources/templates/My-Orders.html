@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head th:replace="~{fragments/Head::head}">
+    <body>
+      <div th:replace="~{fragments/Navbar::navbar}"></div>
+      <script th:replace="~{fragments/Scripts::script1}"></script>
+      <script th:replace="~{fragments/Scripts::script2}"></script>
+      <script th:replace="~{fragments/Scripts::script3}"></script>
+      <div class="container mt-5">
+        <div class="container py-5 h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12">
+              <div class="card card-registration card-registration-2" style="border-radius: 15px">
+                <div class="card-body p-0">
+                  <div class="row g-0">
+                    <div class="col-lg-12">
+                      <div class="p-5">
+                        <div class="d-flex justify-content-between align-items-center mb-5">
+                          <h1 class="fw-bold mb-0 text-black">My Orders</h1>
+                          <h6 class="mb-0 text-muted"><span th:text="${orders.size()}"></span> items</h6>
+                        </div>
+                        <hr class="my-4" />
+
+                        <div th:each="order , iterStat: ${orders}">
+                          <div th:id="'order-' + ${order.id}" class="row mb-4 d-flex justify-content-between align-items-center">
+                            <div class="col-md-2">
+                              <h1><span th:text="${iterStat.index + 1}"></span></h1>
+                            </div>
+                            <div class="col-md-5">
+                              <h6 class="text-muted">Order Status: <span th:text="${order.orderStatus}"></span></h6>
+                              <h6 class="text-muted">Order Status: <span th:text="${order.paymentMethod}"></span></h6>
+                              <h6 class="text-muted">Payment Status: <span th:text="${order.paymentStatus}"></span></h6>
+                              <h6 class="text-muted">Shipping address: <span th:text="${order.address}"></span></h6>
+                            </div>
+                            <div class="col-md-2">
+                              <h6 class="mb-0">$ <span th:text="${order.price}"></span></h6>
+                            </div>
+                            <div class="col-md-2">
+                              <th:block th:if="${order.orderStatus ne 'DELIVERED'}">
+                                <button type="button" th:onclick="'cancelOrder(' + ${order.id} + ')'" >Cancel Order</button>
+                              </th:block>
+                            </div>
+                          </div>
+                          <hr class="my-4" />
+                        </div>
+
+                        <div class="pt-5">
+                          <h6 class="mb-0">
+                            <a th:href="@{/}" class="text-body"><i class="fas fa-long-arrow-alt-left me-2"></i>Back to shop</a>
+                          </h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div th:replace="~{fragments/Footer::admin-footer}"></div>
+    </body>
+  </head>
+</html>

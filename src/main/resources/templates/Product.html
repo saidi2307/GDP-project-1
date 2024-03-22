@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head th:replace="~{fragments/Head::head}">
+    <body>
+      <div th:replace="~{fragments/Navbar::navbar}"></div>
+      <script th:replace="~{fragments/Scripts::script1}"></script>
+      <script th:replace="~{fragments/Scripts::script3}"></script>
+      <script th:replace="~{fragments/Scripts::script2}"></script>
+
+      <div class="container mt-5">
+        <h1 class="mb-4">Products</h1>
+
+        <div class="card-group">
+          <div th:each="product : ${products}" class="col-md-4 mb-4">
+            <div class="card card-product">
+              <img th:src="@{'data:image/jpeg;base64,'+${product.generateBase64Image()}}" alt="Category Image" class="card-product-img-top" />
+              <div class="card-body">
+                <h5 class="card-title" th:text="${product.productName}"></h5>
+                <p class="card-title">Category: <span th:text="${product.category.categoryName}"></span></p>
+                <p class="card-title">Price: $<span th:text="${product.price}"></span></p>
+                <div th:title="${product.description}" class="card-text truncate-paragraph"><span th:text="${product.description}"></span></div>
+                <div style="position: absolute; bottom: 1%">
+                  <p class="card-text">
+                    <small class="text-muted">Quantity available: <span th:text="${product.quantity}"></span></small>
+                  </p>
+                  <div class="input-group mb-4">
+                    <div class="input-group-prepend">
+                      <button class="btn btn-outline-secondary" type="button" onclick="decrementQuantity(this)">-</button>
+                    </div>
+                    <input type="text" class="form-control" value="1" id="quantityInput" />
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary" type="button" onclick="incrementQuantity(this)">+</button>
+                    </div>
+                  </div>
+                  <div class="ui-helper-hidden">
+                    <input hidden="hidden" th:value="${product.id}" id="productId" />
+                  </div>
+                  <button type="button" class="btn btn-primary" th:id="${product.id}" onclick="addToCart(this)">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div th:replace="~{fragments/Footer::admin-footer}"></div>
+    </body>
+  </head>
+</html>

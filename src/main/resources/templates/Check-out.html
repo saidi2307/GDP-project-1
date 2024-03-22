@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head th:replace="~{fragments/Head::head}">
+    <body>
+      <div th:replace="~{fragments/Navbar::navbar}"></div>
+      <script th:replace="~{fragments/Scripts::script1}"></script>
+      <script th:replace="~{fragments/Scripts::script5}"></script>
+      <script th:replace="~{fragments/Scripts::script2}"></script>
+
+      <div class="container mt-5">
+        <div class="container mt-5">
+          <h1 class="mb-4">Billing Summary</h1>
+        </div>
+
+        <hr class="mt-0 mb-4" />
+        <div class="col-xl-8">
+          <div class="card mb-4">
+            <div class="card-header">Total Bill: <span th:text="${orderData.totalAmount}"></span></div>
+            <div class="card-body">
+              <form th:action="@{/confirm-order}" th:object="${ConfirmOrderForm}" method="post">
+                <div class="form-group">
+                  <label for="name">Full Name</label>
+                  <input type="text" class="form-control" id="name" name="name" placeholder="Enter your full name" required />
+                </div>
+                <div class="form-group">
+                  <label for="address">Address</label>
+                  <textarea class="form-control" id="address" rows="3" name="address" placeholder="Enter your billing address" required></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="payment-type">Payment Type</label>
+                  <select class="form-control" name="paymentMethod" id="payment-type" onchange="toggleCreditCardInfo(this)">
+                    <option value="Cash On Delivery" selected>Cash On Devlivery</option>
+                    <option value="Credit Card">Credit Card</option>
+                  </select>
+                </div>
+                <div id="credit-card-info" class="hidden">
+                  <div class="form-group">
+                    <label for="creditCardNumber">Credit Card Number</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="creditCardNumber"
+                      name="creditCardNumber"
+                      placeholder="Enter your credit card number"
+                    />
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="expiryDate">Expiry Date</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="expiryDate"
+                        name="expiryDate"
+                        placeholder="MM/YY"
+                        pattern="(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])"
+                      />
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="cvv">CVV</label>
+                      <input type="number" class="form-control" id="cvv" name="cvv" placeholder="Enter CVV" maxlength="3" minlength="3" />
+                    </div>
+                  </div>
+                </div>
+                <br />
+                <input th:value="${orderData.getOrder().id}" hidden="hidden" id="orderId" name="orderId" />
+                <button type="submit" class="btn col-8 offset-2 btn-dark btn-block btn-lg">Confirm order</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div th:replace="~{fragments/Footer::admin-footer}"></div>
+    </body>
+  </head>
+</html>

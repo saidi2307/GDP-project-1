@@ -1,0 +1,117 @@
+<div th:fragment="footer">
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-6">
+          <h6>About</h6>
+          <p class="text-justify">
+            <i>WholeSale System </i> refers to a comprehensive business model designed to facilitate the bulk buying and selling of goods or services
+            between manufacturers, distributors, and retailers. This system plays a crucial role in the supply chain, acting as an intermediary that
+            bridges the gap between producers and end-users.
+          </p>
+        </div>
+
+        <div class="col-xs-6 col-md-3">
+          <h6>Categories</h6>
+          <ul class="footer-links">
+            <div th:each="category, iterStat : ${categories}" th:if="${iterStat.index < 5}">
+              <li><span th:text="${category.categoryName}"></span></li>
+            </div>
+          </ul>
+        </div>
+
+        <div class="col-xs-6 col-md-3">
+          <h6>Quick Links</h6>
+          <ul class="footer-links">
+            <li><a th:href="@{/login}">Login</a></li>
+            <li><a th:href="@{/assistance}">Help and Assistance</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr />
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-sm-6 col-xs-12">
+          <p class="copyright-text">Copyright &copy; 2017 All Rights Reserved by <a href="#">WholeSale Systems</a>.</p>
+        </div>
+
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <ul class="social-icons">
+            <li>
+              <a class="facebook" href="#"><i class="fab fa-facebook"></i></a>
+            </li>
+            <li>
+              <a class="twitter" href="#"><i class="fab fa-twitter"></i></a>
+            </li>
+            <li>
+              <a class="dribbble" href="#"><i class="fab fa-dribbble"></i></a>
+            </li>
+            <li>
+              <a class="linkedin" href="#"><i class="fab fa-linkedin"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<div th:fragment="admin-footer">
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-6">
+          <h6>About</h6>
+          <p class="text-justify">
+            <i>WholeSale System </i> refers to a comprehensive business model designed to facilitate the bulk buying and selling of goods or services
+            between manufacturers, distributors, and retailers. This system plays a crucial role in the supply chain, acting as an intermediary that
+            bridges the gap between producers and end-users.
+          </p>
+        </div>
+
+        <div class="col-xs-6 col-md-3">
+          <h6>Categories</h6>
+          <ul class="footer-links">
+            <div th:each="category, iterStat : ${categories}" th:if="${iterStat.index < 5}">
+              <li><span th:text="${category.categoryName}"></span></li>
+            </div>
+          </ul>
+        </div>
+
+        <div class="col-xs-6 col-md-3">
+          <h6>Quick Links</h6>
+          <ul class="footer-links">
+            <li><a th:href="@{/login}">Login</a></li>
+            <li><a th:href="@{/assistance}">Help and Assistance</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr />
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-sm-6 col-xs-12">
+          <p class="copyright-text">Copyright &copy; 2017 All Rights Reserved by <a href="#">WholeSale Systems</a>.</p>
+        </div>
+
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <ul class="social-icons">
+            <li>
+              <a class="facebook" href="#"><i class="fab fa-facebook"></i></a>
+            </li>
+            <li>
+              <a class="twitter" href="#"><i class="fab fa-twitter"></i></a>
+            </li>
+            <li>
+              <a class="dribbble" href="#"><i class="fab fa-dribbble"></i></a>
+            </li>
+            <li>
+              <a class="linkedin" href="#"><i class="fab fa-linkedin"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
